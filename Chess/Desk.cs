@@ -6,5 +6,6 @@ namespace Chess
 {
     class Desk
     {
+        Figura[,] Coordinates = new Figura[8,8];
     }
 }

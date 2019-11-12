@@ -6,5 +6,6 @@ namespace Chess
 {
     class Queen : Figura
     {
+
     }
 }
