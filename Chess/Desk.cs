@@ -4,7 +4,7 @@ using System.Text;
 
 namespace Chess
 {
-    class Desk
-    {
-    }
+   public sealed class Desk
+   {
+   }
 }

@@ -4,7 +4,9 @@ using System.Text;
 
 namespace Chess
 {
-    class Position
+    struct Position
     {
+        int posx;
+        char posy;
     }
 }

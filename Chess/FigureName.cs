@@ -4,7 +4,13 @@ using System.Text;
 
 namespace Chess
 {
-    class FigureName
+    enum FigureName
     {
+        rook,
+        pawn,
+        queen,
+        king,
+        bishop,
+        knight
     }
 }

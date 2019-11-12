@@ -4,7 +4,7 @@ using System.Text;
 
 namespace Chess
 {
-    class Figure
+    public class Figure
     {
     }
 }
