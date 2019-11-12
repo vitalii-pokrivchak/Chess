@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace Chess
 {
@@ -6,7 +7,9 @@ namespace Chess
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
+            Position pos = new Position();
+            pos.CreatePosts();
+
         }
     }
 }
