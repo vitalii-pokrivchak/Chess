@@ -6,6 +6,9 @@ namespace Chess
 {
     class Desk
     {
-        Figura[,] Coordinates = new Figura[8,8];
+        public Figura[,] Coordinates = new Figura[8,8];
+        public bool CheckColor () {
+            return true;
+         }
     }
 }

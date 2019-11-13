@@ -6,7 +6,14 @@ namespace Chess
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
+            string a = "a1";
+            Position.GetPosition(a);
+            string b = "b2";
+            Position.GetPosition(b);
+
+            //   Console.WriteLine("Hello World!");
+          //  MyString.FooStringBuilder();
+      
         }
     }
 }

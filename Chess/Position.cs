@@ -6,17 +6,24 @@ namespace Chess
 {
     public struct Position
     {
-        int GetPosition(string _position)
+        static public int GetPosition(string _position)
         {
-            if _position.Length() == 2;
-            for (int i = 0; i < _position.Length; i++)
-            {
-                int first = (int)_position[i];
-
+            if (_position.Length == 2){
+                _position = _position.ToLower();
+                var x = (int)(_position[0] - 97);
+                var y = (int)(_position[1] - 49);
+                System.Console.WriteLine($"You input: {_position}\n");
+                System.Console.WriteLine($"First: {x}\nSeckond: {y}");
+                int a = 0;
+            return x;
             }
-            int a = 0;
-            return a
-        };
+            else
+                {
+               System.Console.WriteLine($"Plase chouse you move using two leters");
+                return 0;
+            }
+        }
     }
 }
+
 

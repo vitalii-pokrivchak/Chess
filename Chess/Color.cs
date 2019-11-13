@@ -4,11 +4,9 @@ using System.Text;
 
 namespace Chess
 {
-
-    public class Figura
+    public enum Color
     {
-        public string Name { get; set; }
-
-        
+        black,
+        white
     }
 }

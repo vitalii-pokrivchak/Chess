@@ -6,5 +6,9 @@ namespace Chess
 {
     class Pawn : Figura
     {
+        bool FirsMove()
+        {
+            return false;
+        }
     }
 }
