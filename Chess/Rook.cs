@@ -4,12 +4,7 @@ using System.Text;
 
 namespace Chess
 {
-    class Program
+    class Rook
     {
-       
-        static void Main(string[] args)
-        {
-
-        }
     }
 }

@@ -6,5 +6,8 @@ namespace Chess
 {
     public class Figure
     {
+        public string Name { get; set; }
+        public Color GetColor { get; set; }
+        public bool Move() => true;
     }
 }

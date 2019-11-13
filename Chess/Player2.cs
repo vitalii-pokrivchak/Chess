@@ -4,12 +4,8 @@ using System.Text;
 
 namespace Chess
 {
-    class Program
+    public class Player2
     {
-       
-        static void Main(string[] args)
-        {
 
-        }
     }
 }

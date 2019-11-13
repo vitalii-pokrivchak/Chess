@@ -4,12 +4,9 @@ using System.Text;
 
 namespace Chess
 {
-    class Program
+    public enum Color
     {
-       
-        static void Main(string[] args)
-        {
-
-        }
+        Black,
+        White
     }
 }

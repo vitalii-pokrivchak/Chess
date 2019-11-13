@@ -6,5 +6,6 @@ namespace Chess
 {
    public sealed class Desk
    {
+        
    }
 }
