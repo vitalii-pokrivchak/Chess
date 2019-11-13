@@ -6,5 +6,11 @@ namespace Chess.Figures
 {
     class Bishop
     {
+
+        public int color { get; set; }
+    void move()
+        {
+
+        }
     }
 }
