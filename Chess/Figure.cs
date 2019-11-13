@@ -8,6 +8,6 @@ namespace Chess
     {
         public string Name { get; set; }
         public Color GetColor { get; set; }
-        public bool Move() => true;
+        public virtual bool CheckMove() => true;
     }
 }

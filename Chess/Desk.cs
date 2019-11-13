@@ -6,6 +6,7 @@ namespace Chess
 {
    public sealed class Desk
    {
-        
-   }
+        Figure[,] pos = new Figure[8,8];
+        public bool CheckColor() => false;
+    }
 }

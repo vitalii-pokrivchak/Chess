@@ -6,7 +6,6 @@ namespace Chess
 {
     struct Position
     {
-        int posx;
-        char posy;
+        int x, y;
     }
 }

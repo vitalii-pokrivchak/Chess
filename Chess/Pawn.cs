@@ -4,7 +4,11 @@ using System.Text;
 
 namespace Chess
 {
-    class Pawn
+    public class Pawn:Figure
     {
+        public override bool CheckMove()
+        {
+            return false;
+        }
     }
 }
