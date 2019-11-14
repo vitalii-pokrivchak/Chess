@@ -4,9 +4,10 @@ using System.Text;
 
 namespace Chess
 {
-     public abstract class Figure
-    {        
+    public abstract class Figure
+    {
+        public Color _color;
         public SFigurePosition Position { get; set; }
-        public abstract void Move(SFigurePosition pos);
+        public abstract MoveState CheckMove(SFigurePosition pos, ref Figure[,] deskGrid);
     }
 }
