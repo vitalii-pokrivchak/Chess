@@ -2,16 +2,24 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace Chess
+namespace Chess.Figures
 {
     public sealed class Pawn : Figure
     {
+        public Pawn(FigureColor Color) : base(Color)
+        {
+
+        }
         private bool _firstMove = true;
         public override MoveState CheckMove(SFigurePosition newPos, ref Figure[,] deskGrid)
         {
+            if (newPos.Equals(Position))
+            {
+                return MoveState.Cannot;
+            }
 
             int idx = 1;
-            if (_color == Color.Black)
+            if (Color == FigureColor.Black)
             {
                 idx = idx * -1;
             }

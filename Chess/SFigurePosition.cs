@@ -22,5 +22,13 @@ namespace Chess
             _x = x;
             _y = y;
         }
+        bool Equals(SFigurePosition obj)
+        {
+            if (_x == obj._x && _y == obj._y)
+            {
+                return true;
+            }
+            return false;
+        }
     }
 }
