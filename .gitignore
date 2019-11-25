@@ -3,7 +3,6 @@
 ################################################################################
 
 /.vs
-/Chess/obj/Release/netcoreapp3.0
-/Chess/obj/Debug/netcoreapp3.0
 /Chess/obj
-/Chess/bin/Debug/netcoreapp3.0
+/Chess/bin
+
