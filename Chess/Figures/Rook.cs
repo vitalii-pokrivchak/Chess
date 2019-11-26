@@ -10,24 +10,24 @@ namespace Chess.Figures
         {
 
         }
-        public override MoveState CheckMove(SFigurePosition newPos, ref Figure[,] deskGrid)
+        public override MoveState CheckMove(SFigurePosition newPos, SFigurePosition currPos, ref Figure[,] deskGrid)
         {
-            if (newPos.Equals(Position))
+            if (newPos.Equals(currPos))
             {
                 return MoveState.Cannot;
             }
 
             Figure fig = deskGrid[newPos.X, newPos.Y];
 
-            if (newPos.X == Position.X && newPos.Y != Position.Y)
+            if (newPos.X == currPos.X && newPos.Y != currPos.Y)
             {
                 int idx = 1;
-                if (newPos.Y > Position.Y)
+                if (newPos.Y > currPos.Y)
                 {
                     idx *= -1;
                 }
 
-                for (int i = Position.Y + idx; i != newPos.Y - idx; i += idx)
+                for (int i = currPos.Y + idx; i != newPos.Y - idx; i += idx)
                 {
                     if (deskGrid[newPos.X, newPos.Y] != null)
                     {
@@ -44,15 +44,15 @@ namespace Chess.Figures
 
             }
 
-            if (newPos.X != Position.X && newPos.Y == Position.Y)
+            if (newPos.X != currPos.X && newPos.Y == currPos.Y)
             {
                 int idx = 1;
-                if (newPos.X > Position.X)
+                if (newPos.X > currPos.X)
                 {
                     idx *= -1;
                 }
 
-                for (int i = Position.X + idx; i != newPos.X - idx; i += idx)
+                for (int i = currPos.X + idx; i != newPos.X - idx; i += idx)
                 {
                     if (deskGrid[newPos.X, newPos.X] != null)
                     {

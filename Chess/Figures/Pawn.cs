@@ -11,9 +11,9 @@ namespace Chess.Figures
 
         }
         private bool _firstMove = true;
-        public override MoveState CheckMove(SFigurePosition newPos, ref Figure[,] deskGrid)
+        public override MoveState CheckMove(SFigurePosition newPos, SFigurePosition currPos, ref Figure[,] deskGrid)
         {
-            if (newPos.Equals(Position))
+            if (newPos.Equals(currPos))
             {
                 return MoveState.Cannot;
             }
@@ -25,16 +25,16 @@ namespace Chess.Figures
             }
             Figure fig = deskGrid[newPos.X, newPos.Y];
 
-            if (newPos.Y == Position.Y + idx)
+            if (newPos.Y == currPos.Y + idx)
             {
-                if (newPos.X == Position.X + 1 || newPos.X == Position.X - 1)
+                if (newPos.X == currPos.X + 1 || newPos.X == currPos.X - 1)
                 {
                     if (fig != null)
                     {
                         return MoveState.Fight;
                     }
                 }
-                if (newPos.X == Position.X)
+                if (newPos.X == currPos.X)
                 {
                     if (fig == null)
                     {
@@ -42,7 +42,7 @@ namespace Chess.Figures
                     }
                 }
             }
-            if (newPos.Y == Position.Y + idx + idx && newPos.X == Position.X && _firstMove)
+            if (newPos.Y == currPos.Y + idx + idx && newPos.X == currPos.X && _firstMove)
             {
                 _firstMove = false;
                 

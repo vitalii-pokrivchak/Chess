@@ -10,34 +10,37 @@ namespace Chess.Figures
         {
 
         }
-        public override MoveState CheckMove(SFigurePosition newPos, ref Figure[,] deskGrid)
+        public override MoveState CheckMove(SFigurePosition newPos, SFigurePosition currPos, ref Figure[,] deskGrid)
         {
-            if (newPos.Equals(Position))
+            if (newPos.Equals(currPos))
             {
                 return MoveState.Cannot;
             }
 
-            if (newPos.X == Position.X + 1 && newPos.Y == Position.Y ||
-                newPos.X == Position.X + 1 && newPos.Y == Position.Y + 1 ||
-                newPos.X == Position.X + 1 && newPos.Y == Position.Y - 1 ||
-                newPos.X == Position.X - 1 && newPos.Y == Position.Y ||
-                newPos.X == Position.X - 1 && newPos.Y == Position.Y + 1 ||
-                newPos.X == Position.X - 1 && newPos.Y == Position.Y - 1 ||
-                newPos.X == Position.X && newPos.Y == Position.Y + 1 ||
-                newPos.X == Position.X && newPos.Y == Position.Y - 1)
+            if (newPos.X == currPos.X + 1 && newPos.Y == currPos.Y ||
+                newPos.X == currPos.X + 1 && newPos.Y == currPos.Y + 1 ||
+                newPos.X == currPos.X + 1 && newPos.Y == currPos.Y - 1 ||
+                newPos.X == currPos.X - 1 && newPos.Y == currPos.Y ||
+                newPos.X == currPos.X - 1 && newPos.Y == currPos.Y + 1 ||
+                newPos.X == currPos.X - 1 && newPos.Y == currPos.Y - 1 ||
+                newPos.X == currPos.X && newPos.Y == currPos.Y + 1 ||
+                newPos.X == currPos.X && newPos.Y == currPos.Y - 1)
             {
                 Figure tempFig = deskGrid[newPos.X, newPos.Y];
-                
+
                 deskGrid[newPos.X, newPos.Y] = this;
 
-                foreach (var Fig in deskGrid)
+                for (int i = 0; i < 8; i++)
                 {
-                    if (Fig.Color != this.Color &&
-                        Fig.CheckMove(newPos, ref deskGrid) == MoveState.Fight)
+                    for (int j = 0; j < 8; j++)
                     {
-                        deskGrid[newPos.X, newPos.Y] = tempFig;
-                        return MoveState.Cannot;
-                    }                    
+                        if (deskGrid[i, j].Color != this.Color &&
+                            deskGrid[i, j].CheckMove(newPos, new SFigurePosition(i, j), ref deskGrid) == MoveState.Fight)
+                        {
+                            deskGrid[newPos.X, newPos.Y] = tempFig;
+                            return MoveState.Cannot;
+                        }
+                    }
                 }
 
                 deskGrid[newPos.X, newPos.Y] = tempFig;
