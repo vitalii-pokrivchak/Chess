@@ -10,6 +10,9 @@ namespace Chess
         const int DESKSIZE = 8;
         Figure[,] _deskGrid = new Figure[DESKSIZE, DESKSIZE];
         SFigurePosition _activeFigure;
+
+        public delegate void ChangeColor(int i, int j);
+        public event ChangeColor RepaintCell;
         public void ClearDesk()
         {
             for (int i = 0; i < DESKSIZE; i++)
@@ -41,50 +44,44 @@ namespace Chess
         {
             get => _deskGrid[i, j];
         }
-        public bool ActivateFigure(int i, int j, Player player)
+        public void AvailableMoves(int i, int j, Player player)
         {
             if (player.Color == _deskGrid[i, j].Color)
             {
                 _activeFigure.SetPosition(-1, -1);
-                return false;
+                return;
             }
             _activeFigure.SetPosition(i, j);
-            return true;
-        }
 
-        public void AvailableMoves(int i, int j)
-        {
             for (int idx = 0; idx < DESKSIZE; idx++)
             {
                 for (int idy = 0; idy < DESKSIZE; idy++)
                 {
                     if (_deskGrid[i, j].CheckMove(new SFigurePosition(idx, idy),
                         new SFigurePosition(i, j),
-                        ref _deskGrid) == MoveState.Can ||
-                        _deskGrid[i, j].CheckMove(new SFigurePosition(idx, idy),
-                        new SFigurePosition(i, j),
-                        ref _deskGrid) == MoveState.Fight)
+                        ref _deskGrid) != MoveState.Cannot)
                     {
-                        // call event to paint current cell
+                        RepaintCell(idx, idy);
                     }
                 }
             }
         }
-
         public void Move(int i, int j, Player player)
         {
-            if (_activeFigure.X != -1 || _activeFigure.Y != -1)
+            if (_activeFigure.X != -1 || _activeFigure.Y != -1 &&
+                _deskGrid[i, j].Color == player.Color &&
+                _deskGrid[_activeFigure.X, _activeFigure.Y].CheckMove(new SFigurePosition(i, j),
+                    new SFigurePosition(_activeFigure.X, _activeFigure.Y),
+                    ref _deskGrid) != MoveState.Cannot)
             {
-                if (_deskGrid[i, j].CheckMove(new SFigurePosition(i, j), new SFigurePosition(_activeFigure.X, _activeFigure.Y), ref _deskGrid) != MoveState.Cannot)
+                if (_deskGrid[i, j] != null)
                 {
-                    if(_deskGrid[i,j] != null)
-                    {
-                        player._deadFigures.Add(_deskGrid[i, j]);
-                    }
-                    _deskGrid[i, j] = _deskGrid[_activeFigure.X, _activeFigure.Y];
+                    player._deadFigures.Add(_deskGrid[i, j]);
                 }
+                player._moves.Add($"{_activeFigure.X} {_activeFigure.Y} to {i} {j}");
+
+                _deskGrid[i, j] = _deskGrid[_activeFigure.X, _activeFigure.Y];
             }
         }
     }
-
 }
