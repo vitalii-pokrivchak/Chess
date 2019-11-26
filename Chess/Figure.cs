@@ -10,6 +10,8 @@ namespace Chess
         public SFigurePosition Position { get; set; }
         public abstract MoveState CheckMove(SFigurePosition newPos, ref Figure[,] deskGrid);
 
+        public abstract byte[] GetImage();
+        
         public Figure(FigureColor color)
         {
             Color = color;

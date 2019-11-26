@@ -109,5 +109,10 @@ namespace Chess.Figures
 
             return MoveState.Cannot;
         }
+
+        public override byte[] GetImage()
+        {
+            throw new NotImplementedException();
+        }
     }
 }

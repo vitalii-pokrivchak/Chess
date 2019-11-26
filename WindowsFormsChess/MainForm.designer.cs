@@ -70,14 +70,14 @@
             this.tableLayoutPanel1.Size = new System.Drawing.Size(628, 531);
             this.tableLayoutPanel1.TabIndex = 1;
             // 
-            // Form1
+            // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(628, 594);
             this.Controls.Add(this.tableLayoutPanel1);
             this.Controls.Add(this.panel1);
-            this.Name = "Form1";
+            this.Name = "MainForm";
             this.Text = "Form1";
             this.Load += new System.EventHandler(this.Form1_Load);
             this.ResumeLayout(false);

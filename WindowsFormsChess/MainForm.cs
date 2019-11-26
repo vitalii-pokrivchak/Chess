@@ -1,8 +1,10 @@
-﻿using System;
+﻿using Chess;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -15,10 +17,43 @@ namespace WindowsFormsChess
     {
         char[] chars = new char[] { 'a', 'b', 'c', 'd', 'e','f','g','h' };
 
+        Desk _desk = new Desk();
+
         public MainForm()
         {
             InitializeComponent();
+            _desk.ClearDesk();
 
+        }
+
+        void RefreshDesk()
+        {
+            for (int i=0;i<8;i++)
+            {
+                for (int j = 0; j < 8; j++)
+                {
+                    if (_desk[i, j] != null)
+                    {
+                        var control = tableLayoutPanel1.GetControlFromPosition(j+1, i+1) as PictureBox;
+                        if (control != null)
+                        {
+                            try
+                            {
+                                var image = Image.FromStream(new MemoryStream(_desk[i, j].GetImage()));
+                                control.Image = image;
+                                control.Refresh();
+                                
+                            }
+                            catch
+                            {
+
+                            }
+
+                        }
+                    }
+                }
+
+            }
         }
 
         void SetRowLabel(int i)
@@ -60,6 +95,7 @@ namespace WindowsFormsChess
             tableLayoutPanel1.Controls.Add(f);
             tableLayoutPanel1.SetCellPosition(f, new TableLayoutPanelCellPosition(i, j));
             f.Dock = DockStyle.Fill;
+            f.SizeMode = PictureBoxSizeMode.StretchImage;
 
 
         }
@@ -77,6 +113,7 @@ namespace WindowsFormsChess
 
                 }
             }
+            RefreshDesk();
             Refresh();
 
 

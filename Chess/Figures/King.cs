@@ -50,5 +50,13 @@ namespace Chess.Figures
 
             return MoveState.Cannot;
         }
+
+        public override byte[] GetImage()
+        {
+            if (Color == FigureColor.White)
+                return ResourceImages.king_white;
+            else
+                throw new NotImplementedException();
+        }
     }
 }
