@@ -28,6 +28,11 @@ namespace Chess.Figures
             {
                 Figure tempFig = deskGrid[newPos.X, newPos.Y];
 
+                if (tempFig != null && tempFig?.Color == this.Color)
+                {
+                    return MoveState.Cannot;
+                }
+
                 deskGrid[newPos.X, newPos.Y] = this;
 
                 for (int i = 0; i < 8; i++)
@@ -50,7 +55,6 @@ namespace Chess.Figures
                 }
                 return MoveState.Fight;
             }
-
             return MoveState.Cannot;
         }
 
