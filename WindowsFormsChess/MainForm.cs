@@ -15,7 +15,7 @@ namespace WindowsFormsChess
 
     public partial class MainForm : Form
     {
-        char[] chars = new char[] { 'a', 'b', 'c', 'd', 'e','f','g','h' };
+        char[] chars = new char[] { 'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h' };
 
         Desk _desk = new Desk();
 
@@ -23,18 +23,25 @@ namespace WindowsFormsChess
         {
             InitializeComponent();
             _desk.ClearDesk();
+            _desk.RepaintCell += PaintCell;
 
+        }
+
+        void PaintCell(int i, int j)
+        {
+            var control = tableLayoutPanel1.GetControlFromPosition(j + 1, i + 1) as PictureBox;
+            control.BackColor = Color.Green;
         }
 
         void RefreshDesk()
         {
-            for (int i=0;i<8;i++)
+            for (int i = 0; i < 8; i++)
             {
                 for (int j = 0; j < 8; j++)
                 {
                     if (_desk[i, j] != null)
                     {
-                        var control = tableLayoutPanel1.GetControlFromPosition(j+1, i+1) as PictureBox;
+                        var control = tableLayoutPanel1.GetControlFromPosition(j + 1, i + 1) as PictureBox;
                         if (control != null)
                         {
                             try
@@ -42,7 +49,7 @@ namespace WindowsFormsChess
                                 var image = Image.FromStream(new MemoryStream(_desk[i, j].GetImage()));
                                 control.Image = image;
                                 control.Refresh();
-                                
+
                             }
                             catch
                             {
@@ -59,7 +66,7 @@ namespace WindowsFormsChess
         void SetRowLabel(int i)
         {
             var lb = new Label();
-           
+
             tableLayoutPanel1.Controls.Add(lb);
             tableLayoutPanel1.SetCellPosition(lb, new TableLayoutPanelCellPosition(0, i));
             lb.Text = (9 - i).ToString();
@@ -72,7 +79,7 @@ namespace WindowsFormsChess
         void SetColumnLabel(int i)
         {
             var lb = new Label();
-            lb.Text = ""+chars[i-1];
+            lb.Text = "" + chars[i - 1];
             lb.AutoSize = false;
             lb.TextAlign = ContentAlignment.MiddleCenter;
             tableLayoutPanel1.Controls.Add(lb);
@@ -84,7 +91,7 @@ namespace WindowsFormsChess
         void AddCell(int i, int j)
         {
             var f = new PictureBox();
-            if ((i+j) % 2 == 0)
+            if ((i + j) % 2 == 0)
             {
                 f.BackColor = Color.White;
                 //f.Cursor = new Cursor();
@@ -97,7 +104,7 @@ namespace WindowsFormsChess
             tableLayoutPanel1.SetCellPosition(f, new TableLayoutPanelCellPosition(i, j));
             f.Dock = DockStyle.Fill;
             f.SizeMode = PictureBoxSizeMode.StretchImage;
-         }
+        }
 
 
         private void Form1_Load(object sender, EventArgs e)
@@ -109,7 +116,7 @@ namespace WindowsFormsChess
             {
                 SetRowLabel(i);
                 SetColumnLabel(i);
-                for (int j=1;j<9;j++)
+                for (int j = 1; j < 9; j++)
                 {
                     AddCell(i, j);
 

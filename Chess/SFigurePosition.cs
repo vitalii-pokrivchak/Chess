@@ -14,12 +14,17 @@ namespace Chess
 
         public SFigurePosition(int x, int y)
         {
+            if (x < -1 || x > 7 || y < -1 || y > 7)
+            {
+                throw new Exception();
+            }
+
             _x = x;
             _y = y;
         }
         public void SetPosition(int x, int y)
         {
-            if (x < 0 || x > 7 || y < 7 || y > 7)
+            if (x < -1 || x > 7 || y < -1 || y > 7)
             {
                 throw new Exception();
             }
