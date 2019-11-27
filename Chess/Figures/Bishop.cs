@@ -19,8 +19,8 @@ namespace Chess.Figures
 
             Figure fig = deskGrid[newPos.X, newPos.Y];
 
-            int idx = 1;
-            int idy = 1;
+            int idx = -1;
+            int idy = -1;
 
             if (newPos.X > currPos.X && newPos.Y < currPos.Y)
             {

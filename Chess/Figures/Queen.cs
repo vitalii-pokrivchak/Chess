@@ -19,8 +19,8 @@ namespace Chess.Figures
 
             Figure fig = deskGrid[newPos.X, newPos.Y];
 
-            int idx = 1;
-            int idy = 1;
+            int idx = -1;
+            int idy = -1;
 
             if (newPos.X > currPos.X && newPos.Y < currPos.Y)
             {
@@ -60,15 +60,15 @@ namespace Chess.Figures
 
             if (newPos.X == currPos.X && newPos.Y != currPos.Y)
             {
-                idx = 1;
+                idx = -1;
                 if (newPos.Y > currPos.Y)
                 {
                     idx *= -1;
                 }
 
-                for (int i = currPos.Y + idx; i != newPos.Y - idx; i += idx)
+                for (int i = currPos.Y + idx; i != newPos.Y + idx; i += idx)
                 {
-                    if (deskGrid[newPos.X, newPos.Y] != null)
+                    if (deskGrid[newPos.X, i] != null)
                     {
                         return MoveState.Cannot;
                     }
@@ -80,20 +80,19 @@ namespace Chess.Figures
                 }
 
                 return MoveState.Can;
-
             }
 
             if (newPos.X != currPos.X && newPos.Y == currPos.Y)
             {
-                idx = 1;
+                idx = -1;
                 if (newPos.X > currPos.X)
                 {
                     idx *= -1;
                 }
 
-                for (int i = currPos.X + idx; i != newPos.X - idx; i += idx)
+                for (int i = currPos.X + idx; i != newPos.X + idx; i += idx)
                 {
-                    if (deskGrid[newPos.X, newPos.X] != null)
+                    if (deskGrid[i, newPos.Y] != null)
                     {
                         return MoveState.Cannot;
                     }
