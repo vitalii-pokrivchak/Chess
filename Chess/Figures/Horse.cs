@@ -10,21 +10,21 @@ namespace Chess.Figures
         {
 
         }
-        public override MoveState CheckMove(SFigurePosition newPos, ref Figure[,] deskGrid)
+        public override MoveState CheckMove(SFigurePosition newPos, SFigurePosition currPos, ref Figure[,] deskGrid)
         {
-            if (newPos.Equals(Position))
+            if (newPos.Equals(currPos))
             {
                 return MoveState.Cannot;
             }
 
-            if (newPos.X == Position.X + 1 && newPos.Y == Position.Y + 3 ||
-                newPos.X == Position.X + 1 && newPos.Y == Position.Y - 3 ||
-                newPos.X == Position.X - 1 && newPos.Y == Position.Y + 3 ||
-                newPos.X == Position.X - 1 && newPos.Y == Position.Y - 3 ||
-                newPos.X == Position.X + 3 && newPos.Y == Position.Y + 1 ||
-                newPos.X == Position.X + 3 && newPos.Y == Position.Y - 1 ||
-                newPos.X == Position.X - 3 && newPos.Y == Position.Y + 1 ||
-                newPos.X == Position.X - 3 && newPos.Y == Position.Y - 1)
+            if (newPos.X == currPos.X + 1 && newPos.Y == currPos.Y + 3 ||
+                newPos.X == currPos.X + 1 && newPos.Y == currPos.Y - 3 ||
+                newPos.X == currPos.X - 1 && newPos.Y == currPos.Y + 3 ||
+                newPos.X == currPos.X - 1 && newPos.Y == currPos.Y - 3 ||
+                newPos.X == currPos.X + 3 && newPos.Y == currPos.Y + 1 ||
+                newPos.X == currPos.X + 3 && newPos.Y == currPos.Y - 1 ||
+                newPos.X == currPos.X - 3 && newPos.Y == currPos.Y + 1 ||
+                newPos.X == currPos.X - 3 && newPos.Y == currPos.Y - 1)
             {
                 Figure fig = deskGrid[newPos.X, newPos.Y];
 

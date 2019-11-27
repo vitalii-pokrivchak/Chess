@@ -7,11 +7,8 @@ namespace Chess
     public abstract class Figure
     {
         public readonly FigureColor Color;
-        public SFigurePosition Position { get; set; }
-        public abstract MoveState CheckMove(SFigurePosition newPos, ref Figure[,] deskGrid);
-
-        public abstract byte[] GetImage();
-        
+        public abstract MoveState CheckMove(SFigurePosition newPos, SFigurePosition currPos, ref Figure[,] deskGrid);
+        public abstract byte[] GetImage();        
         public Figure(FigureColor color)
         {
             Color = color;
