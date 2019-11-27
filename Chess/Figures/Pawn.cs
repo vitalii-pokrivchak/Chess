@@ -18,23 +18,23 @@ namespace Chess.Figures
                 return MoveState.Cannot;
             }
 
-            int idx = 1;
+            int idx = -1;
             if (Color == FigureColor.Black)
             {
                 idx = idx * -1;
             }
             Figure fig = deskGrid[newPos.X, newPos.Y];
 
-            if (newPos.Y == currPos.Y + idx)
+            if (newPos.X == currPos.X + idx)
             {
-                if (newPos.X == currPos.X + 1 || newPos.X == currPos.X - 1)
+                if (newPos.Y == currPos.Y + 1 || newPos.Y == currPos.Y - 1)
                 {
                     if (fig != null)
                     {
                         return MoveState.Fight;
                     }
                 }
-                if (newPos.X == currPos.X)
+                if (newPos.Y == currPos.Y)
                 {
                     if (fig == null)
                     {
@@ -42,14 +42,15 @@ namespace Chess.Figures
                     }
                 }
             }
-            if (newPos.Y == currPos.Y + idx + idx && newPos.X == currPos.X && _firstMove)
+            if (newPos.X == currPos.X + idx + idx && newPos.Y == currPos.Y && _firstMove)
             {
-                _firstMove = false;
-                
-                Figure fig1 = deskGrid[newPos.X, newPos.Y - idx];
-                if (fig == null && fig1 == null)
+                if (fig == null)
                 {
-                    return MoveState.Can;
+                    Figure fig1 = deskGrid[newPos.X + idx, newPos.Y];
+                    if (fig == null && fig1 == null)
+                    {
+                        return MoveState.Can;
+                    }
                 }
             }
             return MoveState.Cannot;
