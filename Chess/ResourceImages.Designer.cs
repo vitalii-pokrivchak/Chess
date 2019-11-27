@@ -63,9 +63,119 @@ namespace Chess {
         /// <summary>
         ///   Looks up a localized resource of type System.Byte[].
         /// </summary>
+        internal static byte[] BishopBlack {
+            get {
+                object obj = ResourceManager.GetObject("BishopBlack", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Byte[].
+        /// </summary>
+        internal static byte[] BishopWhite {
+            get {
+                object obj = ResourceManager.GetObject("BishopWhite", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Byte[].
+        /// </summary>
+        internal static byte[] HourseBlack {
+            get {
+                object obj = ResourceManager.GetObject("HourseBlack", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Byte[].
+        /// </summary>
+        internal static byte[] HourseWhite {
+            get {
+                object obj = ResourceManager.GetObject("HourseWhite", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Byte[].
+        /// </summary>
         internal static byte[] king_white {
             get {
                 object obj = ResourceManager.GetObject("king_white", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Byte[].
+        /// </summary>
+        internal static byte[] KingBlack {
+            get {
+                object obj = ResourceManager.GetObject("KingBlack", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Byte[].
+        /// </summary>
+        internal static byte[] PawnBlack {
+            get {
+                object obj = ResourceManager.GetObject("PawnBlack", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Byte[].
+        /// </summary>
+        internal static byte[] PawnWhite {
+            get {
+                object obj = ResourceManager.GetObject("PawnWhite", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Byte[].
+        /// </summary>
+        internal static byte[] QueenBlack {
+            get {
+                object obj = ResourceManager.GetObject("QueenBlack", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Byte[].
+        /// </summary>
+        internal static byte[] QueenWhite {
+            get {
+                object obj = ResourceManager.GetObject("QueenWhite", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Byte[].
+        /// </summary>
+        internal static byte[] RockBlack {
+            get {
+                object obj = ResourceManager.GetObject("RockBlack", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Byte[].
+        /// </summary>
+        internal static byte[] RockWhite {
+            get {
+                object obj = ResourceManager.GetObject("RockWhite", resourceCulture);
                 return ((byte[])(obj));
             }
         }

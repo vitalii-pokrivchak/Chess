@@ -87,6 +87,7 @@ namespace WindowsFormsChess
             if ((i+j) % 2 == 0)
             {
                 f.BackColor = Color.White;
+                //f.Cursor = new Cursor();
             }
             else
             {
@@ -96,13 +97,14 @@ namespace WindowsFormsChess
             tableLayoutPanel1.SetCellPosition(f, new TableLayoutPanelCellPosition(i, j));
             f.Dock = DockStyle.Fill;
             f.SizeMode = PictureBoxSizeMode.StretchImage;
-
-
-        }
+         }
 
 
         private void Form1_Load(object sender, EventArgs e)
         {
+            this.Location = new Point(0, 0);
+            this.Height = 650;
+            this.Width = 600;
             for (int i = 1; i < 9; i++)
             {
                 SetRowLabel(i);
@@ -117,6 +119,11 @@ namespace WindowsFormsChess
             Refresh();
 
 
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            Close();
         }
     }
 }

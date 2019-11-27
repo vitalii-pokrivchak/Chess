@@ -118,7 +118,40 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="BishopBlack" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Resources\BishopBlack.png;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="BishopWhite" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Resources\BishopWhite.png;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="HourseBlack" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Resources\HourseBlack.png;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="HourseWhite" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Resources\HourseWhite.png;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="KingBlack" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Resources\KingBlack.png;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
   <data name="king_white" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>Resources\chess-3413412_640.png;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="PawnBlack" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Resources\PawnBlack.png;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="PawnWhite" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Resources\PawnWhite.png;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="QueenBlack" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Resources\QueenBlack.png;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="QueenWhite" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Resources\QueenWhite.png;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="RockBlack" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Resources\RockBlack.png;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="RockWhite" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Resources\RockWhite.png;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
 </root>

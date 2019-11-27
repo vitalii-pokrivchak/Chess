@@ -31,10 +31,10 @@ namespace Chess
             _deskGrid[7, 2] = new Bishop(FigureColor.Black);
             _deskGrid[7, 5] = new Bishop(FigureColor.Black);
 
-            _deskGrid[0, 3] = new Queen(FigureColor.White);
-            _deskGrid[0, 4] = new King(FigureColor.White);
-            _deskGrid[7, 3] = new Queen(FigureColor.Black);
-            _deskGrid[7, 4] = new King(FigureColor.Black);
+            _deskGrid[0, 4] = new Queen(FigureColor.White);
+            _deskGrid[0, 3] = new King(FigureColor.White);
+            _deskGrid[7, 4] = new Queen(FigureColor.Black);
+            _deskGrid[7, 3] = new King(FigureColor.Black);
 
         }
         public Figure this[int i, int j]

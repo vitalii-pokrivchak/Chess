@@ -56,7 +56,7 @@ namespace Chess.Figures
             if (Color == FigureColor.White)
                 return ResourceImages.king_white;
             else
-                throw new NotImplementedException();
+                return ResourceImages.KingBlack;
         }
     }
 }

@@ -112,7 +112,10 @@ namespace Chess.Figures
 
         public override byte[] GetImage()
         {
-            throw new NotImplementedException();
+            if (Color == FigureColor.White)
+                return ResourceImages.QueenWhite;
+            else
+                return ResourceImages.QueenBlack;
         }
     }
 }
