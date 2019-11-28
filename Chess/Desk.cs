@@ -11,6 +11,7 @@ namespace Chess
         Figure[,] _deskGrid = new Figure[DESKSIZE, DESKSIZE];
         SFigurePosition _activeFigure = new SFigurePosition(-1, -1);
         FigureColor _activePlayerColor = FigureColor.White;
+        public FigureColor ActivePlayerColor { get { return _activePlayerColor; } }
 
         Player _playerWhite = new Player(FigureColor.White);
         Player _playerBlack = new Player(FigureColor.Black);
@@ -122,9 +123,9 @@ namespace Chess
             _deskGrid[_activeFigure.X, _activeFigure.Y] = null;
             _activeFigure.SetPosition(-1, -1);
 
-            Refresh.Invoke();
-
             _activePlayerColor = (_activePlayerColor == FigureColor.White) ? FigureColor.Black : FigureColor.White;
+
+            Refresh.Invoke();
         }
     }
 }

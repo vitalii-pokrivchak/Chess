@@ -6,6 +6,8 @@ namespace Chess.Figures
 {
     public sealed class King : Figure
     {
+        static bool check = true;
+
         public King(FigureColor Color) : base(Color)
         {
 
@@ -33,22 +35,28 @@ namespace Chess.Figures
                     return MoveState.Cannot;
                 }
 
-                deskGrid[newPos.X, newPos.Y] = this;
-
-                for (int i = 0; i < 8; i++)
+                if (check)
                 {
-                    for (int j = 0; j < 8; j++)
+                    check = !check;
+                    deskGrid[newPos.X, newPos.Y] = this;
+
+                    for (int i = 0; i < 8; i++)
                     {
-                        if (deskGrid[i, j]?.Color != this.Color &&
-                            deskGrid[i, j]?.CheckMove(newPos, new SFigurePosition(i, j), ref deskGrid) == MoveState.Fight)
+                        for (int j = 0; j < 8; j++)
                         {
-                            deskGrid[newPos.X, newPos.Y] = tempFig;
-                            return MoveState.Cannot;
+                            if (deskGrid[i, j]?.Color != this.Color &&
+                                deskGrid[i, j]?.CheckMove(newPos, new SFigurePosition(i, j), ref deskGrid) == MoveState.Fight)
+                            {
+                                deskGrid[newPos.X, newPos.Y] = tempFig;
+                                check = !check;
+                                return MoveState.Cannot;
+                            }
                         }
                     }
+                    deskGrid[newPos.X, newPos.Y] = tempFig;
+                    check = !check;
                 }
 
-                deskGrid[newPos.X, newPos.Y] = tempFig;
                 if (tempFig == null)
                 {
                     return MoveState.Can;
@@ -61,7 +69,7 @@ namespace Chess.Figures
         public override byte[] GetImage()
         {
             if (Color == FigureColor.White)
-                return ResourceImages.king_white;
+                return ResourceImages.KingWhite;
             else
                 return ResourceImages.KingBlack;
         }

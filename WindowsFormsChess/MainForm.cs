@@ -27,9 +27,18 @@ namespace WindowsFormsChess
         }
         void PaintCell(int i, int j)
         {
-            var control = tableLayoutPanel1.GetControlFromPosition(j + 1, i + 1) as PictureBox;
+            var coords = GetCoordiantes(i, j);
+            var control = tableLayoutPanel1.GetControlFromPosition(coords.Y + 1, coords.X + 1) as PictureBox;
             control.BackColor = Color.Green;
             control.Refresh();
+        }
+        SFigurePosition GetCoordiantes(int i, int j)
+        {
+            if (_desk.ActivePlayerColor == FigureColor.White)
+            {
+                return new SFigurePosition(i, j);
+            }
+            return new SFigurePosition(7 - i, 7 - j);
         }
         void RefreshDesk()
         {
@@ -37,14 +46,15 @@ namespace WindowsFormsChess
             {
                 for (int j = 0; j < 8; j++)
                 {
+                    var coords = GetCoordiantes(i, j);
                     var control = tableLayoutPanel1.GetControlFromPosition(j + 1, i + 1) as PictureBox;
                     if (control != null)
                     {
-                        if (_desk[i, j] != null)
+                        if (_desk[coords.X, coords.Y] != null)
                         {
                             try
                             {
-                                var image = Image.FromStream(new MemoryStream(_desk[i, j].GetImage()));
+                                var image = Image.FromStream(new MemoryStream(_desk[coords.X, coords.Y].GetImage()));
                                 control.Image = image;
                             }
                             catch (Exception)
@@ -69,6 +79,23 @@ namespace WindowsFormsChess
                     }
                 }
             }
+
+            for (int i = 1; i < 9; i++)
+            {
+                var control2 = tableLayoutPanel1.GetControlFromPosition(i, 0) as Label;
+                var control1 = tableLayoutPanel1.GetControlFromPosition(0, i) as Label;
+
+                if (_desk.ActivePlayerColor == FigureColor.Black)
+                {
+                    control1.Text = i.ToString();
+                    control2.Text = "" + chars[8 - i];
+                }
+                else
+                {
+                    control1.Text = (9 - i).ToString();
+                    control2.Text = "" + chars[i - 1];
+                }
+            }
         }
         void SetRowLabel(int i)
         {
@@ -77,7 +104,7 @@ namespace WindowsFormsChess
                 Text = (9 - i).ToString(),
                 AutoSize = false,
                 Margin = new Padding(0),
-                //lb.TextAlign = ContentAlignment.MiddleCenter;
+                TextAlign = ContentAlignment.MiddleCenter,
                 Dock = DockStyle.Fill
             };
             tableLayoutPanel1.Controls.Add(lb);
@@ -109,20 +136,73 @@ namespace WindowsFormsChess
             tableLayoutPanel1.SetCellPosition(f, new TableLayoutPanelCellPosition(i, j));
         }
 
+        void AddDeadFigureInfo(TableLayoutPanel obj, FigureColor color)
+        {
+            for (int i = 0; i < 5; i++)
+            {
+                var pb = new PictureBox
+                {
+                    //BackColor = Color.Chartreuse,
+                    Dock = DockStyle.Fill,
+                    SizeMode = PictureBoxSizeMode.StretchImage,
+                };
+                obj.Controls.Add(pb);
+                obj.SetCellPosition(pb, new TableLayoutPanelCellPosition(0, i));
+
+                var lb = new Label
+                {
+                    Text = "x" + 0.ToString(),
+                    AutoSize = false,
+                    TextAlign = ContentAlignment.MiddleCenter,
+                    Dock = DockStyle.Fill
+                };
+                obj.Controls.Add(lb);
+                obj.SetCellPosition(lb, new TableLayoutPanelCellPosition(1, i));
+            }
+
+            if (color == FigureColor.White)
+            {
+                (obj.GetControlFromPosition(0, 0) as PictureBox).Image =
+                    Image.FromStream(new MemoryStream(ResourceImages.QueenWhite));
+                (obj.GetControlFromPosition(0, 1) as PictureBox).Image =
+                    Image.FromStream(new MemoryStream(ResourceImages.BishopWhite));
+                (obj.GetControlFromPosition(0, 2) as PictureBox).Image =
+                    Image.FromStream(new MemoryStream(ResourceImages.HourseWhite));
+                (obj.GetControlFromPosition(0, 3) as PictureBox).Image =
+                    Image.FromStream(new MemoryStream(ResourceImages.RockWhite));
+                (obj.GetControlFromPosition(0, 4) as PictureBox).Image =
+                    Image.FromStream(new MemoryStream(ResourceImages.PawnWhite));
+            }
+            else
+            {
+                (obj.GetControlFromPosition(0, 0) as PictureBox).Image =
+                    Image.FromStream(new MemoryStream(ResourceImages.QueenBlack));
+                (obj.GetControlFromPosition(0, 1) as PictureBox).Image =
+                    Image.FromStream(new MemoryStream(ResourceImages.BishopBlack));
+                (obj.GetControlFromPosition(0, 2) as PictureBox).Image =
+                    Image.FromStream(new MemoryStream(ResourceImages.HourseBlack));
+                (obj.GetControlFromPosition(0, 3) as PictureBox).Image =
+                    Image.FromStream(new MemoryStream(ResourceImages.RockBlack));
+                (obj.GetControlFromPosition(0, 4) as PictureBox).Image =
+                    Image.FromStream(new MemoryStream(ResourceImages.PawnBlack));
+            }
+        }
+
         private void Image_Click(object sender, EventArgs e)
         {
             RefreshDesk();
             var pos = tableLayoutPanel1.GetCellPosition(sender as PictureBox);
+            var a = GetCoordiantes(pos.Row - 1, pos.Column - 1);
 
             (sender as PictureBox).BackColor = Color.Bisque;
-            _desk.ChoseAction(pos.Row - 1, pos.Column - 1);
+            _desk.ChoseAction(a.X, a.Y);
         }
 
         private void Form1_Load(object sender, EventArgs e)
         {
             this.Location = new Point(80, 80);
-            this.Height = 650;
-            this.Width = 660;
+            //this.Height = 650;
+            //this.Width = 660;
             for (int i = 1; i < 9; i++)
             {
                 SetRowLabel(i);
@@ -132,6 +212,8 @@ namespace WindowsFormsChess
                     AddCell(i, j);
                 }
             }
+            AddDeadFigureInfo(tableLayoutPanel2, FigureColor.White);
+            AddDeadFigureInfo(tableLayoutPanel3, FigureColor.Black);
             RefreshDesk();
             Refresh();
         }
