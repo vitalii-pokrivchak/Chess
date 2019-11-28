@@ -9,10 +9,15 @@ namespace Chess
     {
         const int DESKSIZE = 8;
         Figure[,] _deskGrid = new Figure[DESKSIZE, DESKSIZE];
-        SFigurePosition _activeFigure;
+        SFigurePosition _activeFigure = new SFigurePosition(-1, -1);
+        FigureColor _activePlayerColor = FigureColor.White;
+
+        Player _playerWhite = new Player(FigureColor.White);
+        Player _playerBlack = new Player(FigureColor.Black);
 
         public delegate void ChangeColor(int i, int j);
         public event ChangeColor RepaintCell;
+
         public void ClearDesk()
         {
             for (int i = 0; i < DESKSIZE; i++)
@@ -39,49 +44,67 @@ namespace Chess
             _deskGrid[0, 3] = new King(FigureColor.White);
             _deskGrid[7, 4] = new Queen(FigureColor.Black);
             _deskGrid[7, 3] = new King(FigureColor.Black);
-
+            
+            _activePlayerColor = FigureColor.White;
         }
         public Figure this[int i, int j]
         {
             get => _deskGrid[i, j];
         }
-        public void AvailableMoves(int i, int j, Player player)
+        public void ChoseAction(int i, int j)
         {
-            if (player.Color == _deskGrid[i, j].Color)
+            if (_deskGrid[i, j] == null)
             {
                 _activeFigure.SetPosition(-1, -1);
                 return;
             }
-            _activeFigure.SetPosition(i, j);
 
-            for (int idx = 0; idx < DESKSIZE; idx++)
+            if (_activePlayerColor == _deskGrid[i, j].Color)
             {
-                for (int idy = 0; idy < DESKSIZE; idy++)
+                _activeFigure.SetPosition(i, j);
+
+                for (int idx = 0; idx < DESKSIZE; idx++)
                 {
-                    if (_deskGrid[i, j].CheckMove(new SFigurePosition(idx, idy),
-                        new SFigurePosition(i, j),
-                        ref _deskGrid) != MoveState.Cannot)
+                    for (int idy = 0; idy < DESKSIZE; idy++)
                     {
-                        RepaintCell(idx, idy);
+                        if (_deskGrid[i, j].CheckMove(new SFigurePosition(idx, idy),
+                            new SFigurePosition(i, j),
+                            ref _deskGrid) != MoveState.Cannot)
+                        {
+                            RepaintCell?.Invoke(idx, idy);
+                        }
                     }
                 }
             }
-        }
-        public void Move(int i, int j, Player player)
-        {
-            if (_activeFigure.X != -1 || _activeFigure.Y != -1 &&
-                _deskGrid[i, j].Color == player.Color &&
-                _deskGrid[_activeFigure.X, _activeFigure.Y].CheckMove(new SFigurePosition(i, j),
+            else
+            {
+                if (_activeFigure.X != -1 || _activeFigure.Y != -1)
+                {
+                    return;
+                }
+
+                if (_deskGrid[i, j].Color != _activePlayerColor &&
+                    _deskGrid[_activeFigure.X, _activeFigure.Y].CheckMove(new SFigurePosition(i, j),
                     new SFigurePosition(_activeFigure.X, _activeFigure.Y),
                     ref _deskGrid) != MoveState.Cannot)
-            {
-                if (_deskGrid[i, j] != null)
                 {
-                    player._deadFigures.Add(_deskGrid[i, j]);
+                    if (_deskGrid[i, j] != null)
+                    {
+                        if (_activePlayerColor == FigureColor.White)
+                        {
+                            _playerBlack._deadFigures.Add(_deskGrid[i, j]);
+                            _activePlayerColor = FigureColor.Black;
+                        }
+                        else
+                        {
+                            _playerWhite._deadFigures.Add(_deskGrid[i, j]);
+                            _activePlayerColor = FigureColor.White;
+                        }
+                    }
+                    
+                    _deskGrid[i, j] = _deskGrid[_activeFigure.X, _activeFigure.Y];
+                    _activeFigure.SetPosition(-1, -1);
                 }
-                player._moves.Add($"{_activeFigure.X} {_activeFigure.Y} to {i} {j}");
-
-                _deskGrid[i, j] = _deskGrid[_activeFigure.X, _activeFigure.Y];
             }
         }
     }

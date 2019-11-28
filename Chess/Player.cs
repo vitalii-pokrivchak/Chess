@@ -6,15 +6,15 @@ namespace Chess
 {
     public class Player
     {
-        FigureColor _color;
-        public FigureColor Color { get { return _color; } }
+        public FigureColor Color { get; }
         public List<string> _moves;
         public List<Figure> _deadFigures;
 
-        Player(FigureColor color)
+        public Player(FigureColor color)
         {
-            _color = color;
-            
+            Color = color;
+            _moves = new List<string>();
+            _deadFigures = new List<Figure>();            
         }
     }
 }
