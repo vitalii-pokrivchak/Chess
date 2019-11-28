@@ -19,11 +19,21 @@ namespace WindowsFormsChess
 
         Desk _desk = new Desk();
 
+        FigureColor currentPlayer = FigureColor.White;
+
         public MainForm()
         {
             InitializeComponent();
             _desk.ClearDesk();
 
+        }
+
+        int GetPositionInDesk(int i)
+        {
+            if (currentPlayer == FigureColor.White)
+                return i + 1;
+            else
+                return 8 - i;
         }
 
         void RefreshDesk()
@@ -34,13 +44,14 @@ namespace WindowsFormsChess
                 {
                     if (_desk[i, j] != null)
                     {
-                        var control = tableLayoutPanel1.GetControlFromPosition(j+1, i+1) as PictureBox;
+                        var control = tableLayoutPanel1.GetControlFromPosition(GetPositionInDesk(j), GetPositionInDesk(i)) as PictureBox;
                         if (control != null)
                         {
                             try
                             {
                                 var image = Image.FromStream(new MemoryStream(_desk[i, j].GetImage()));
                                 control.Image = image;
+                                //var c= new Cursor() 
                                 control.Refresh();
                                 
                             }
@@ -97,6 +108,7 @@ namespace WindowsFormsChess
             tableLayoutPanel1.SetCellPosition(f, new TableLayoutPanelCellPosition(i, j));
             f.Dock = DockStyle.Fill;
             f.SizeMode = PictureBoxSizeMode.StretchImage;
+
          }
 
 
@@ -124,6 +136,23 @@ namespace WindowsFormsChess
         private void button1_Click(object sender, EventArgs e)
         {
             Close();
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            if (currentPlayer == FigureColor.White)
+            {
+                currentPlayer = FigureColor.Black;
+                playerName.Text = "Player2";
+            }
+            else
+            {
+                currentPlayer = FigureColor.White;
+                playerName.Text = "Player1";
+
+            }
+ 
+            RefreshDesk();
         }
     }
 }
