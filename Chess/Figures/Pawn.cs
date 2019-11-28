@@ -29,7 +29,7 @@ namespace Chess.Figures
             {
                 if (newPos.Y == currPos.Y + 1 || newPos.Y == currPos.Y - 1)
                 {
-                    if (fig != null)
+                    if (fig != null && fig?.Color != this.Color)
                     {
                         return MoveState.Fight;
                     }
@@ -42,11 +42,12 @@ namespace Chess.Figures
                     }
                 }
             }
+            _firstMove = this.Color == FigureColor.White ? currPos.X == 6 : currPos.X == 1;
             if (newPos.X == currPos.X + idx + idx && newPos.Y == currPos.Y && _firstMove)
             {
                 if (fig == null)
                 {
-                    Figure fig1 = deskGrid[newPos.X + idx, newPos.Y];
+                    Figure fig1 = deskGrid[currPos.X + idx, currPos.Y];
                     if (fig == null && fig1 == null)
                     {
                         return MoveState.Can;

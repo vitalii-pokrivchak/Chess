@@ -19,6 +19,11 @@ namespace Chess.Figures
 
             Figure fig = deskGrid[newPos.X, newPos.Y];
 
+            if (fig?.Color == this.Color)
+            {
+                return MoveState.Cannot;
+            }
+
             if (newPos.X == currPos.X && newPos.Y != currPos.Y)
             {
                 int idx = -1;
@@ -27,7 +32,7 @@ namespace Chess.Figures
                     idx *= -1;
                 }
 
-                for (int i = currPos.Y + idx; i != newPos.Y + idx; i += idx)
+                for (int i = currPos.Y + idx; i != newPos.Y; i += idx)
                 {
                     if (deskGrid[currPos.X, i] != null)
                     {
@@ -51,7 +56,7 @@ namespace Chess.Figures
                     idx *= -1;
                 }
 
-                for (int i = currPos.X + idx; i != newPos.X + idx; i += idx)
+                for (int i = currPos.X + idx; i != newPos.X; i += idx)
                 {
                     if (deskGrid[i, currPos.Y] != null)
                     {

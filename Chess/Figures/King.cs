@@ -39,8 +39,8 @@ namespace Chess.Figures
                 {
                     for (int j = 0; j < 8; j++)
                     {
-                        if (deskGrid[i, j].Color != this.Color &&
-                            deskGrid[i, j].CheckMove(newPos, new SFigurePosition(i, j), ref deskGrid) == MoveState.Fight)
+                        if (deskGrid[i, j]?.Color != this.Color &&
+                            deskGrid[i, j]?.CheckMove(newPos, new SFigurePosition(i, j), ref deskGrid) == MoveState.Fight)
                         {
                             deskGrid[newPos.X, newPos.Y] = tempFig;
                             return MoveState.Cannot;
