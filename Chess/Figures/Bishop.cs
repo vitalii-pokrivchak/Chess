@@ -12,12 +12,14 @@ namespace Chess.Figures
         }
         public override MoveState CheckMove(SFigurePosition newPos, SFigurePosition currPos, ref Figure[,] deskGrid)
         {
-            if (newPos.Equals(currPos))
+            if (newPos.Equals(currPos) ||
+                newPos.X == currPos.X && newPos.Y != currPos.Y ||
+                newPos.X != currPos.X && newPos.Y == currPos.Y ||
+                deskGrid[newPos.X, newPos.Y]?.Color == this.Color
+                )
             {
                 return MoveState.Cannot;
             }
-
-            Figure fig = deskGrid[newPos.X, newPos.Y];
 
             int idx = 1;
             int idy = 1;
@@ -41,7 +43,7 @@ namespace Chess.Figures
             int x = currPos.X + idx;
             int y = currPos.Y + idy;
 
-            for (; x < newPos.X && y < newPos.Y; x += idx, y += idy)
+            for (; x != newPos.X && y != newPos.Y; x += idx, y += idy)
             {
                 if (deskGrid[x, y] != null)
                 {

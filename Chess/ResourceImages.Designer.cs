@@ -22,7 +22,7 @@ namespace Chess {
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "16.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    internal class ResourceImages {
+    public class ResourceImages {
         
         private static global::System.Resources.ResourceManager resourceMan;
         
@@ -36,7 +36,7 @@ namespace Chess {
         ///   Returns the cached ResourceManager instance used by this class.
         /// </summary>
         [global::System.ComponentModel.EditorBrowsableAttribute(global::System.ComponentModel.EditorBrowsableState.Advanced)]
-        internal static global::System.Resources.ResourceManager ResourceManager {
+        public static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
                     global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("Chess.ResourceImages", typeof(ResourceImages).Assembly);
@@ -51,7 +51,7 @@ namespace Chess {
         ///   resource lookups using this strongly typed resource class.
         /// </summary>
         [global::System.ComponentModel.EditorBrowsableAttribute(global::System.ComponentModel.EditorBrowsableState.Advanced)]
-        internal static global::System.Globalization.CultureInfo Culture {
+        public static global::System.Globalization.CultureInfo Culture {
             get {
                 return resourceCulture;
             }
@@ -63,7 +63,7 @@ namespace Chess {
         /// <summary>
         ///   Looks up a localized resource of type System.Byte[].
         /// </summary>
-        internal static byte[] BishopBlack {
+        public static byte[] BishopBlack {
             get {
                 object obj = ResourceManager.GetObject("BishopBlack", resourceCulture);
                 return ((byte[])(obj));
@@ -73,7 +73,7 @@ namespace Chess {
         /// <summary>
         ///   Looks up a localized resource of type System.Byte[].
         /// </summary>
-        internal static byte[] BishopWhite {
+        public static byte[] BishopWhite {
             get {
                 object obj = ResourceManager.GetObject("BishopWhite", resourceCulture);
                 return ((byte[])(obj));
@@ -83,7 +83,7 @@ namespace Chess {
         /// <summary>
         ///   Looks up a localized resource of type System.Byte[].
         /// </summary>
-        internal static byte[] HourseBlack {
+        public static byte[] HourseBlack {
             get {
                 object obj = ResourceManager.GetObject("HourseBlack", resourceCulture);
                 return ((byte[])(obj));
@@ -93,7 +93,7 @@ namespace Chess {
         /// <summary>
         ///   Looks up a localized resource of type System.Byte[].
         /// </summary>
-        internal static byte[] HourseWhite {
+        public static byte[] HourseWhite {
             get {
                 object obj = ResourceManager.GetObject("HourseWhite", resourceCulture);
                 return ((byte[])(obj));
@@ -103,17 +103,7 @@ namespace Chess {
         /// <summary>
         ///   Looks up a localized resource of type System.Byte[].
         /// </summary>
-        internal static byte[] king_white {
-            get {
-                object obj = ResourceManager.GetObject("king_white", resourceCulture);
-                return ((byte[])(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Byte[].
-        /// </summary>
-        internal static byte[] KingBlack {
+        public static byte[] KingBlack {
             get {
                 object obj = ResourceManager.GetObject("KingBlack", resourceCulture);
                 return ((byte[])(obj));
@@ -123,7 +113,17 @@ namespace Chess {
         /// <summary>
         ///   Looks up a localized resource of type System.Byte[].
         /// </summary>
-        internal static byte[] PawnBlack {
+        public static byte[] KingWhite {
+            get {
+                object obj = ResourceManager.GetObject("KingWhite", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Byte[].
+        /// </summary>
+        public static byte[] PawnBlack {
             get {
                 object obj = ResourceManager.GetObject("PawnBlack", resourceCulture);
                 return ((byte[])(obj));
@@ -133,7 +133,7 @@ namespace Chess {
         /// <summary>
         ///   Looks up a localized resource of type System.Byte[].
         /// </summary>
-        internal static byte[] PawnWhite {
+        public static byte[] PawnWhite {
             get {
                 object obj = ResourceManager.GetObject("PawnWhite", resourceCulture);
                 return ((byte[])(obj));
@@ -143,7 +143,7 @@ namespace Chess {
         /// <summary>
         ///   Looks up a localized resource of type System.Byte[].
         /// </summary>
-        internal static byte[] QueenBlack {
+        public static byte[] QueenBlack {
             get {
                 object obj = ResourceManager.GetObject("QueenBlack", resourceCulture);
                 return ((byte[])(obj));
@@ -153,7 +153,7 @@ namespace Chess {
         /// <summary>
         ///   Looks up a localized resource of type System.Byte[].
         /// </summary>
-        internal static byte[] QueenWhite {
+        public static byte[] QueenWhite {
             get {
                 object obj = ResourceManager.GetObject("QueenWhite", resourceCulture);
                 return ((byte[])(obj));
@@ -163,7 +163,7 @@ namespace Chess {
         /// <summary>
         ///   Looks up a localized resource of type System.Byte[].
         /// </summary>
-        internal static byte[] RockBlack {
+        public static byte[] RockBlack {
             get {
                 object obj = ResourceManager.GetObject("RockBlack", resourceCulture);
                 return ((byte[])(obj));
@@ -173,7 +173,7 @@ namespace Chess {
         /// <summary>
         ///   Looks up a localized resource of type System.Byte[].
         /// </summary>
-        internal static byte[] RockWhite {
+        public static byte[] RockWhite {
             get {
                 object obj = ResourceManager.GetObject("RockWhite", resourceCulture);
                 return ((byte[])(obj));

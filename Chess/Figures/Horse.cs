@@ -17,14 +17,14 @@ namespace Chess.Figures
                 return MoveState.Cannot;
             }
 
-            if (newPos.X == currPos.X + 1 && newPos.Y == currPos.Y + 3 ||
-                newPos.X == currPos.X + 1 && newPos.Y == currPos.Y - 3 ||
-                newPos.X == currPos.X - 1 && newPos.Y == currPos.Y + 3 ||
-                newPos.X == currPos.X - 1 && newPos.Y == currPos.Y - 3 ||
-                newPos.X == currPos.X + 3 && newPos.Y == currPos.Y + 1 ||
-                newPos.X == currPos.X + 3 && newPos.Y == currPos.Y - 1 ||
-                newPos.X == currPos.X - 3 && newPos.Y == currPos.Y + 1 ||
-                newPos.X == currPos.X - 3 && newPos.Y == currPos.Y - 1)
+            if (newPos.X == currPos.X + 1 && newPos.Y == currPos.Y + 2 ||
+                newPos.X == currPos.X + 1 && newPos.Y == currPos.Y - 2 ||
+                newPos.X == currPos.X - 1 && newPos.Y == currPos.Y + 2 ||
+                newPos.X == currPos.X - 1 && newPos.Y == currPos.Y - 2 ||
+                newPos.X == currPos.X + 2 && newPos.Y == currPos.Y + 1 ||
+                newPos.X == currPos.X + 2 && newPos.Y == currPos.Y - 1 ||
+                newPos.X == currPos.X - 2 && newPos.Y == currPos.Y + 1 ||
+                newPos.X == currPos.X - 2 && newPos.Y == currPos.Y - 1)
             {
                 Figure fig = deskGrid[newPos.X, newPos.Y];
 
