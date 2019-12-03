@@ -200,10 +200,10 @@ namespace WindowsFormsChess
                 (obj.GetControlFromPosition(0, 4) as PictureBox).Image =
                     Image.FromStream(new MemoryStream(ResourceImages.PawnBlack));
             }
-            tableLayoutPanel1.Controls.Add(f);
-            tableLayoutPanel1.SetCellPosition(f, new TableLayoutPanelCellPosition(i, j));
-            f.Dock = DockStyle.Fill;
-            f.SizeMode = PictureBoxSizeMode.StretchImage;
+            //tableLayoutPanel1.Controls.Add(f);
+            //tableLayoutPanel1.SetCellPosition(f, new TableLayoutPanelCellPosition(i, j));
+            //f.Dock = DockStyle.Fill;
+            //f.SizeMode = PictureBoxSizeMode.StretchImage;
 
          }
 
@@ -246,12 +246,12 @@ namespace WindowsFormsChess
             if (currentPlayer == FigureColor.White)
             {
                 currentPlayer = FigureColor.Black;
-                playerName.Text = "Player2";
+                //playerName.Text = "Player2";
             }
             else
             {
                 currentPlayer = FigureColor.White;
-                playerName.Text = "Player1";
+                //playerName.Text = "Player1";
 
             }
  
