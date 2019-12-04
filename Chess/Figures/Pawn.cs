@@ -11,6 +11,9 @@ namespace Chess.Figures
 
         }
         private bool _firstMove = true;
+
+        public override int FigureOrder => 1;
+
         public override MoveState CheckMove(SFigurePosition newPos, SFigurePosition currPos, ref Figure[,] deskGrid)
         {
             if (newPos.Equals(currPos))

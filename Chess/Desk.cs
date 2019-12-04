@@ -16,6 +16,8 @@ namespace Chess
         Player _playerWhite = new Player(FigureColor.White);
         Player _playerBlack = new Player(FigureColor.Black);
 
+        public Player ActivePlayer { get => ActivePlayerColor == FigureColor.White ? _playerWhite : _playerBlack; }
+
         public delegate void ChangeColor(int i, int j);
         public event ChangeColor RepaintCell;
 
@@ -24,6 +26,16 @@ namespace Chess
 
         public void ClearDesk()
         {
+            // fix clear 
+            for (int i = 2;i<DESKSIZE-2;i++)
+            {
+                for (int j=0;j<DESKSIZE;j++)
+                {
+                    _deskGrid[i, j] = null;
+                }
+            }
+            
+            
             for (int i = 0; i < DESKSIZE; i++)
             {
                 _deskGrid[1, i] = new Pawn(FigureColor.Black);

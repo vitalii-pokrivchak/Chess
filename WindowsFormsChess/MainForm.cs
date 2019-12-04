@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Diagnostics;
 using System.Drawing;
 using System.IO;
 using System.Linq;
@@ -18,8 +19,6 @@ namespace WindowsFormsChess
 
         Desk _desk = new Desk();
 
-        FigureColor currentPlayer = FigureColor.White;
-
         public MainForm()
         {
             InitializeComponent();
@@ -27,15 +26,6 @@ namespace WindowsFormsChess
             _desk.RepaintCell += PaintCell;
             _desk.Refresh += RefreshDesk;
         }
-
-        int GetPositionInDesk(int i)
-        {
-            if (currentPlayer == FigureColor.White)
-                return i + 1;
-            else
-                return 8 - i;
-        }
-
         void PaintCell(int i, int j)
         {
             var coords = GetCoordiantes(i, j);
@@ -110,7 +100,33 @@ namespace WindowsFormsChess
                     control2.Text = "" + chars[i - 1];
                 }
             }
+
+            playerName.Text = _desk.ActivePlayerColor == FigureColor.White ? "White Player" : "Black Player";    
+        
+            // Clear player desk
+            for (int i = 0;i<5;i++)
+            {
+                var control =playerStatusPanel.GetControlFromPosition(0, i) as PictureBox;
+                Trace.Assert(control != null);
+                control.Image = null;
+            }
+
+            var figures = _desk.ActivePlayer._deadFigures.OrderByDescending(o=>o.FigureOrder).GroupBy(k => k.FigureOrder);
+            int idx = 0;
+            foreach (var figure in figures)
+            {
+                var control = playerStatusPanel.GetControlFromPosition(0, idx) as PictureBox;
+                control.Image = Image.FromStream(new MemoryStream(figure.FirstOrDefault().GetImage()));
+                var label = playerStatusPanel.GetControlFromPosition(1, idx) as Label;
+                label.Text = figure.Count().ToString();
+                idx++;
+            }
+
+
         }
+
+
+
         void SetRowLabel(int i)
         {
             var lb = new Label
@@ -148,6 +164,28 @@ namespace WindowsFormsChess
 
             tableLayoutPanel1.Controls.Add(f);
             tableLayoutPanel1.SetCellPosition(f, new TableLayoutPanelCellPosition(i, j));
+        }
+        void InitialPlayerDesk()
+        {
+            for (int i = 0; i < 5; i++)
+            {
+                var f = new PictureBox
+                {
+                    BackColor =  Color.White,
+                    Dock = DockStyle.Fill,
+                    SizeMode = PictureBoxSizeMode.StretchImage,
+                };
+                playerStatusPanel.Controls.Add(f);
+                playerStatusPanel.SetCellPosition(f, new TableLayoutPanelCellPosition(0, i));
+                var label = new Label
+                {
+                    Text = "",
+                    Dock = DockStyle.Fill,
+                    TextAlign = ContentAlignment.MiddleCenter
+                };
+                playerStatusPanel.Controls.Add(label);
+                playerStatusPanel.SetCellPosition(label, new TableLayoutPanelCellPosition(1, i));
+            }
         }
 
         void AddDeadFigureInfo(TableLayoutPanel obj, FigureColor color)
@@ -231,30 +269,22 @@ namespace WindowsFormsChess
                     AddCell(i, j);
                 }
             }
-            AddDeadFigureInfo(tableLayoutPanel2, FigureColor.White);
-            AddDeadFigureInfo(tableLayoutPanel3, FigureColor.Black);
+            InitialPlayerDesk();
+            //AddDeadFigureInfo(tableLayoutPanel2, FigureColor.White);
+            //AddDeadFigureInfo(playerStatusPanel, FigureColor.Black);
             RefreshDesk();
+           
             Refresh();
         }
-        private void button1_Click(object sender, EventArgs e)
+ 
+        private void exitButton_Click(object sender, EventArgs e)
         {
             Close();
         }
 
-        private void button2_Click(object sender, EventArgs e)
+        private void newGameButton_Click(object sender, EventArgs e)
         {
-            if (currentPlayer == FigureColor.White)
-            {
-                currentPlayer = FigureColor.Black;
-                //playerName.Text = "Player2";
-            }
-            else
-            {
-                currentPlayer = FigureColor.White;
-                //playerName.Text = "Player1";
-
-            }
- 
+            _desk.ClearDesk();
             RefreshDesk();
         }
     }

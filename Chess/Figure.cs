@@ -8,7 +8,8 @@ namespace Chess
     {
         public readonly FigureColor Color;
         public abstract MoveState CheckMove(SFigurePosition newPos, SFigurePosition currPos, ref Figure[,] deskGrid);
-        public abstract byte[] GetImage();        
+        public abstract byte[] GetImage();
+        public abstract int FigureOrder { get; }
         public Figure(FigureColor color)
         {
             Color = color;
