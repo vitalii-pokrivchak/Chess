@@ -1,0 +1,17 @@
+C:\Users\serhiy\source\repos\sabatex\Chess\WpfChess\bin\Debug\netcoreapp3.1\WpfChess.exe
+C:\Users\serhiy\source\repos\sabatex\Chess\WpfChess\bin\Debug\netcoreapp3.1\WpfChess.deps.json
+C:\Users\serhiy\source\repos\sabatex\Chess\WpfChess\bin\Debug\netcoreapp3.1\WpfChess.runtimeconfig.json
+C:\Users\serhiy\source\repos\sabatex\Chess\WpfChess\bin\Debug\netcoreapp3.1\WpfChess.runtimeconfig.dev.json
+C:\Users\serhiy\source\repos\sabatex\Chess\WpfChess\bin\Debug\netcoreapp3.1\WpfChess.dll
+C:\Users\serhiy\source\repos\sabatex\Chess\WpfChess\bin\Debug\netcoreapp3.1\WpfChess.pdb
+C:\Users\serhiy\source\repos\sabatex\Chess\WpfChess\obj\Debug\netcoreapp3.1\WpfChess.csprojAssemblyReference.cache
+C:\Users\serhiy\source\repos\sabatex\Chess\WpfChess\obj\Debug\netcoreapp3.1\MainWindow.g.cs
+C:\Users\serhiy\source\repos\sabatex\Chess\WpfChess\obj\Debug\netcoreapp3.1\App.g.cs
+C:\Users\serhiy\source\repos\sabatex\Chess\WpfChess\obj\Debug\netcoreapp3.1\WpfChess_MarkupCompile.cache
+C:\Users\serhiy\source\repos\sabatex\Chess\WpfChess\obj\Debug\netcoreapp3.1\WpfChess_MarkupCompile.lref
+C:\Users\serhiy\source\repos\sabatex\Chess\WpfChess\obj\Debug\netcoreapp3.1\MainWindow.baml
+C:\Users\serhiy\source\repos\sabatex\Chess\WpfChess\obj\Debug\netcoreapp3.1\WpfChess.g.resources
+C:\Users\serhiy\source\repos\sabatex\Chess\WpfChess\obj\Debug\netcoreapp3.1\WpfChess.AssemblyInfoInputs.cache
+C:\Users\serhiy\source\repos\sabatex\Chess\WpfChess\obj\Debug\netcoreapp3.1\WpfChess.AssemblyInfo.cs
+C:\Users\serhiy\source\repos\sabatex\Chess\WpfChess\obj\Debug\netcoreapp3.1\WpfChess.dll
+C:\Users\serhiy\source\repos\sabatex\Chess\WpfChess\obj\Debug\netcoreapp3.1\WpfChess.pdb

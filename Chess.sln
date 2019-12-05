@@ -7,6 +7,10 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Chess", "Chess\Chess.csproj
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WindowsFormsChess", "WindowsFormsChess\WindowsFormsChess.csproj", "{6683792A-CC31-4C65-884F-870DE3F63143}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ChessConsoleServer", "ChessConsoleServer\ChessConsoleServer.csproj", "{48CD8EAB-F206-48CA-9498-1893B802CB47}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WpfChess", "WpfChess\WpfChess.csproj", "{269808DB-B25E-4D5B-85AE-5E4889129232}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +25,14 @@ Global
 		{6683792A-CC31-4C65-884F-870DE3F63143}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6683792A-CC31-4C65-884F-870DE3F63143}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{6683792A-CC31-4C65-884F-870DE3F63143}.Release|Any CPU.Build.0 = Release|Any CPU
+		{48CD8EAB-F206-48CA-9498-1893B802CB47}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{48CD8EAB-F206-48CA-9498-1893B802CB47}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{48CD8EAB-F206-48CA-9498-1893B802CB47}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{48CD8EAB-F206-48CA-9498-1893B802CB47}.Release|Any CPU.Build.0 = Release|Any CPU
+		{269808DB-B25E-4D5B-85AE-5E4889129232}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{269808DB-B25E-4D5B-85AE-5E4889129232}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{269808DB-B25E-4D5B-85AE-5E4889129232}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{269808DB-B25E-4D5B-85AE-5E4889129232}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
