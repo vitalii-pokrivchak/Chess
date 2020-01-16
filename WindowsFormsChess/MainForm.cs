@@ -161,10 +161,19 @@ namespace WindowsFormsChess
                 SizeMode = PictureBoxSizeMode.StretchImage,
             };
             f.Click += Image_Click;
+            f.DragEnter += cellDragEnter;
+            
+            
 
             tableLayoutPanel1.Controls.Add(f);
             tableLayoutPanel1.SetCellPosition(f, new TableLayoutPanelCellPosition(i, j));
         }
+
+        private void cellDragEnter(object sender, DragEventArgs e)
+        {
+            e.Effect = DragDropEffects.Move;
+        }
+
         void InitialPlayerDesk()
         {
             for (int i = 0; i < 5; i++)
@@ -250,7 +259,7 @@ namespace WindowsFormsChess
             RefreshDesk();
             var pos = tableLayoutPanel1.GetCellPosition(sender as PictureBox);
             var a = GetCoordiantes(pos.Row - 1, pos.Column - 1);
-
+            DoDragDrop($"{a}",DragDropEffects.Move);
             (sender as PictureBox).BackColor = Color.Bisque;
             _desk.ChoseAction(a.X, a.Y);
         }
@@ -269,11 +278,11 @@ namespace WindowsFormsChess
                     AddCell(i, j);
                 }
             }
+            tableLayoutPanel1.AllowDrop = true;
             InitialPlayerDesk();
             //AddDeadFigureInfo(tableLayoutPanel2, FigureColor.White);
             //AddDeadFigureInfo(playerStatusPanel, FigureColor.Black);
             RefreshDesk();
-           
             Refresh();
         }
  
@@ -286,6 +295,11 @@ namespace WindowsFormsChess
         {
             _desk.ClearDesk();
             RefreshDesk();
+        }
+
+        private void MainForm_FormClosed(object sender, FormClosedEventArgs e)
+        {
+
         }
     }
 }

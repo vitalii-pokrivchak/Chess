@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\serhiy\\source\\repos\\sabatex\\Chess\\WpfChess\\WpfChess.csproj": {}
+    "C:\\Users\\serhiy\\Source\\Repos\\sabatex\\Chess\\WpfChess\\WpfChess.csproj": {}
   },
   "projects": {
-    "C:\\Users\\serhiy\\source\\repos\\sabatex\\Chess\\WpfChess\\WpfChess.csproj": {
+    "C:\\Users\\serhiy\\Source\\Repos\\sabatex\\Chess\\WpfChess\\WpfChess.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\serhiy\\source\\repos\\sabatex\\Chess\\WpfChess\\WpfChess.csproj",
+        "projectUniqueName": "C:\\Users\\serhiy\\Source\\Repos\\sabatex\\Chess\\WpfChess\\WpfChess.csproj",
         "projectName": "WpfChess",
-        "projectPath": "C:\\Users\\serhiy\\source\\repos\\sabatex\\Chess\\WpfChess\\WpfChess.csproj",
+        "projectPath": "C:\\Users\\serhiy\\Source\\Repos\\sabatex\\Chess\\WpfChess\\WpfChess.csproj",
         "packagesPath": "C:\\Users\\serhiy\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\serhiy\\source\\repos\\sabatex\\Chess\\WpfChess\\obj\\",
+        "outputPath": "C:\\Users\\serhiy\\Source\\Repos\\sabatex\\Chess\\WpfChess\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Microsoft\\Xamarin\\NuGet\\"

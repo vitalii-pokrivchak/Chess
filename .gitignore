@@ -6,7 +6,8 @@
 /Chess/obj
 /Chess/bin
 
-/WindowsFormsChess/bin/Debug
-/WindowsFormsChess/obj/Debug
-/WindowsFormsChess/bin/Release
-/WindowsFormsChess/obj/Release
+/WindowsFormsChess/bin
+/WindowsFormsChess/obj
+
+/WpfChess/obj
+/WpfChess/bin
