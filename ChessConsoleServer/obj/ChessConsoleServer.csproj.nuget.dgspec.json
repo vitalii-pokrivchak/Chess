@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\serhiy\\Source\\Repos\\sabatex\\Chess\\ChessConsoleServer\\ChessConsoleServer.csproj": {}
+    "C:\\Users\\serhiy\\source\\repos\\sabatex\\Chess\\ChessConsoleServer\\ChessConsoleServer.csproj": {}
   },
   "projects": {
-    "C:\\Users\\serhiy\\Source\\Repos\\sabatex\\Chess\\ChessConsoleServer\\ChessConsoleServer.csproj": {
+    "C:\\Users\\serhiy\\source\\repos\\sabatex\\Chess\\ChessConsoleServer\\ChessConsoleServer.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\serhiy\\Source\\Repos\\sabatex\\Chess\\ChessConsoleServer\\ChessConsoleServer.csproj",
+        "projectUniqueName": "C:\\Users\\serhiy\\source\\repos\\sabatex\\Chess\\ChessConsoleServer\\ChessConsoleServer.csproj",
         "projectName": "ChessConsoleServer",
-        "projectPath": "C:\\Users\\serhiy\\Source\\Repos\\sabatex\\Chess\\ChessConsoleServer\\ChessConsoleServer.csproj",
+        "projectPath": "C:\\Users\\serhiy\\source\\repos\\sabatex\\Chess\\ChessConsoleServer\\ChessConsoleServer.csproj",
         "packagesPath": "C:\\Users\\serhiy\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\serhiy\\Source\\Repos\\sabatex\\Chess\\ChessConsoleServer\\obj\\",
+        "outputPath": "C:\\Users\\serhiy\\source\\repos\\sabatex\\Chess\\ChessConsoleServer\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Microsoft\\Xamarin\\NuGet\\"
@@ -56,7 +56,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.100\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.101\\RuntimeIdentifierGraph.json"
         }
       }
     }

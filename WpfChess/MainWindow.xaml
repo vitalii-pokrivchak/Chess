@@ -6,7 +6,16 @@
         xmlns:local="clr-namespace:WpfChess"
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
-    <Grid>
+    <Window.Resources>
+        <Style x:Key="WhiteCell">
+            <Setter Property="Control.Background" Value="White"></Setter>
+        </Style>
+        <Style x:Key="BlackCell">
+            <Setter Property="Control.Background" Value="Black"></Setter>
+        </Style>
+
+    </Window.Resources>
+     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition></ColumnDefinition>
             <ColumnDefinition></ColumnDefinition>
@@ -32,11 +41,9 @@
                 <RowDefinition></RowDefinition>
                 <RowDefinition></RowDefinition>
                 <RowDefinition></RowDefinition>
+                <RowDefinition></RowDefinition>
             </Grid.RowDefinitions>
-            <Border Grid.Row="0" Grid.Column="1" BorderThickness="2" BorderBrush="Black">
-                <Label Grid.Row="0" Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center">a</Label>
-            </Border>
-            
+            <Label Grid.Row="0" Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center">a</Label>
             <Label Grid.Row="0" Grid.Column="2" HorizontalAlignment="Center" VerticalAlignment="Center">b</Label>
             <Label Grid.Row="0" Grid.Column="3" HorizontalAlignment="Center" VerticalAlignment="Center">c</Label>
             <Label Grid.Row="0" Grid.Column="4" HorizontalAlignment="Center" VerticalAlignment="Center">d</Label>
@@ -52,8 +59,78 @@
             <Label Grid.Row="6" Grid.Column="0" HorizontalAlignment="Center" VerticalAlignment="Center">6</Label>
             <Label Grid.Row="7" Grid.Column="0" HorizontalAlignment="Center" VerticalAlignment="Center">7</Label>
             <Label Grid.Row="8" Grid.Column="0" HorizontalAlignment="Center" VerticalAlignment="Center">8</Label>
+            
+            <local:FigureCell  Grid.Row="1" Grid.Column="1" Style="{StaticResource BlackCell}"></local:FigureCell>
+            <local:FigureCell  Grid.Row="1" Grid.Column="2" Style="{StaticResource WhiteCell}"></local:FigureCell>
+            <local:FigureCell  Grid.Row="1" Grid.Column="3" Style="{StaticResource BlackCell}"></local:FigureCell>
+            <local:FigureCell  Grid.Row="1" Grid.Column="4" Style="{StaticResource WhiteCell}"></local:FigureCell>
+            <local:FigureCell  Grid.Row="1" Grid.Column="5" Style="{StaticResource BlackCell}"></local:FigureCell>
+            <local:FigureCell  Grid.Row="1" Grid.Column="6" Style="{StaticResource WhiteCell}"></local:FigureCell>
+            <local:FigureCell  Grid.Row="1" Grid.Column="7" Style="{StaticResource BlackCell}"></local:FigureCell>
+            <local:FigureCell  Grid.Row="1" Grid.Column="8" Style="{StaticResource WhiteCell}"></local:FigureCell>
 
+            <local:FigureCell  Grid.Row="2" Grid.Column="2" Style="{StaticResource BlackCell}"></local:FigureCell>
+            <local:FigureCell  Grid.Row="2" Grid.Column="1" Style="{StaticResource WhiteCell}"></local:FigureCell>
+            <local:FigureCell  Grid.Row="2" Grid.Column="4" Style="{StaticResource BlackCell}"></local:FigureCell>
+            <local:FigureCell  Grid.Row="2" Grid.Column="3" Style="{StaticResource WhiteCell}"></local:FigureCell>
+            <local:FigureCell  Grid.Row="2" Grid.Column="6" Style="{StaticResource BlackCell}"></local:FigureCell>
+            <local:FigureCell  Grid.Row="2" Grid.Column="5" Style="{StaticResource WhiteCell}"></local:FigureCell>
+            <local:FigureCell  Grid.Row="2" Grid.Column="8" Style="{StaticResource BlackCell}"></local:FigureCell>
+            <local:FigureCell  Grid.Row="2" Grid.Column="7" Style="{StaticResource WhiteCell}"></local:FigureCell>
 
+            <local:FigureCell  Grid.Row="3" Grid.Column="1" Style="{StaticResource BlackCell}"></local:FigureCell>
+            <local:FigureCell  Grid.Row="3" Grid.Column="2" Style="{StaticResource WhiteCell}"></local:FigureCell>
+            <local:FigureCell  Grid.Row="3" Grid.Column="3" Style="{StaticResource BlackCell}"></local:FigureCell>
+            <local:FigureCell  Grid.Row="3" Grid.Column="4" Style="{StaticResource WhiteCell}"></local:FigureCell>
+            <local:FigureCell  Grid.Row="3" Grid.Column="5" Style="{StaticResource BlackCell}"></local:FigureCell>
+            <local:FigureCell  Grid.Row="3" Grid.Column="6" Style="{StaticResource WhiteCell}"></local:FigureCell>
+            <local:FigureCell  Grid.Row="3" Grid.Column="7" Style="{StaticResource BlackCell}"></local:FigureCell>
+            <local:FigureCell  Grid.Row="3" Grid.Column="8" Style="{StaticResource WhiteCell}"></local:FigureCell>
+
+            <local:FigureCell  Grid.Row="4" Grid.Column="2" Style="{StaticResource BlackCell}"></local:FigureCell>
+            <local:FigureCell  Grid.Row="4" Grid.Column="1" Style="{StaticResource WhiteCell}"></local:FigureCell>
+            <local:FigureCell  Grid.Row="4" Grid.Column="4" Style="{StaticResource BlackCell}"></local:FigureCell>
+            <local:FigureCell  Grid.Row="4" Grid.Column="3" Style="{StaticResource WhiteCell}"></local:FigureCell>
+            <local:FigureCell  Grid.Row="4" Grid.Column="6" Style="{StaticResource BlackCell}"></local:FigureCell>
+            <local:FigureCell  Grid.Row="4" Grid.Column="5" Style="{StaticResource WhiteCell}"></local:FigureCell>
+            <local:FigureCell  Grid.Row="4" Grid.Column="8" Style="{StaticResource BlackCell}"></local:FigureCell>
+            <local:FigureCell  Grid.Row="4" Grid.Column="7" Style="{StaticResource WhiteCell}"></local:FigureCell>
+
+            <local:FigureCell  Grid.Row="5" Grid.Column="1" Style="{StaticResource BlackCell}"></local:FigureCell>
+            <local:FigureCell  Grid.Row="5" Grid.Column="2" Style="{StaticResource WhiteCell}"></local:FigureCell>
+            <local:FigureCell  Grid.Row="5" Grid.Column="3" Style="{StaticResource BlackCell}"></local:FigureCell>
+            <local:FigureCell  Grid.Row="5" Grid.Column="4" Style="{StaticResource WhiteCell}"></local:FigureCell>
+            <local:FigureCell  Grid.Row="5" Grid.Column="5" Style="{StaticResource BlackCell}"></local:FigureCell>
+            <local:FigureCell  Grid.Row="5" Grid.Column="6" Style="{StaticResource WhiteCell}"></local:FigureCell>
+            <local:FigureCell  Grid.Row="5" Grid.Column="7" Style="{StaticResource BlackCell}"></local:FigureCell>
+            <local:FigureCell  Grid.Row="5" Grid.Column="8" Style="{StaticResource WhiteCell}"></local:FigureCell>
+
+            <local:FigureCell  Grid.Row="6" Grid.Column="2" Style="{StaticResource BlackCell}"></local:FigureCell>
+            <local:FigureCell  Grid.Row="6" Grid.Column="1" Style="{StaticResource WhiteCell}"></local:FigureCell>
+            <local:FigureCell  Grid.Row="6" Grid.Column="4" Style="{StaticResource BlackCell}"></local:FigureCell>
+            <local:FigureCell  Grid.Row="6" Grid.Column="3" Style="{StaticResource WhiteCell}"></local:FigureCell>
+            <local:FigureCell  Grid.Row="6" Grid.Column="6" Style="{StaticResource BlackCell}"></local:FigureCell>
+            <local:FigureCell  Grid.Row="6" Grid.Column="5" Style="{StaticResource WhiteCell}"></local:FigureCell>
+            <local:FigureCell  Grid.Row="6" Grid.Column="8" Style="{StaticResource BlackCell}"></local:FigureCell>
+            <local:FigureCell  Grid.Row="6" Grid.Column="7" Style="{StaticResource WhiteCell}"></local:FigureCell>
+
+            <local:FigureCell  Grid.Row="7" Grid.Column="1" Style="{StaticResource BlackCell}"></local:FigureCell>
+            <local:FigureCell  Grid.Row="7" Grid.Column="2" Style="{StaticResource WhiteCell}"></local:FigureCell>
+            <local:FigureCell  Grid.Row="7" Grid.Column="3" Style="{StaticResource BlackCell}"></local:FigureCell>
+            <local:FigureCell  Grid.Row="7" Grid.Column="4" Style="{StaticResource WhiteCell}"></local:FigureCell>
+            <local:FigureCell  Grid.Row="7" Grid.Column="5" Style="{StaticResource BlackCell}"></local:FigureCell>
+            <local:FigureCell  Grid.Row="7" Grid.Column="6" Style="{StaticResource WhiteCell}"></local:FigureCell>
+            <local:FigureCell  Grid.Row="7" Grid.Column="7" Style="{StaticResource BlackCell}"></local:FigureCell>
+            <local:FigureCell  Grid.Row="7" Grid.Column="8" Style="{StaticResource WhiteCell}"></local:FigureCell>
+            
+            <local:FigureCell  Grid.Row="8" Grid.Column="2" Style="{StaticResource BlackCell}"></local:FigureCell>
+            <local:FigureCell  Grid.Row="8" Grid.Column="1" Style="{StaticResource WhiteCell}"></local:FigureCell>
+            <local:FigureCell  Grid.Row="8" Grid.Column="4" Style="{StaticResource BlackCell}"></local:FigureCell>
+            <local:FigureCell  Grid.Row="8" Grid.Column="3" Style="{StaticResource WhiteCell}"></local:FigureCell>
+            <local:FigureCell  Grid.Row="8" Grid.Column="6" Style="{StaticResource BlackCell}"></local:FigureCell>
+            <local:FigureCell  Grid.Row="8" Grid.Column="5" Style="{StaticResource WhiteCell}"></local:FigureCell>
+            <local:FigureCell  Grid.Row="8" Grid.Column="8" Style="{StaticResource BlackCell}"></local:FigureCell>
+            <local:FigureCell  Grid.Row="8" Grid.Column="7" Style="{StaticResource WhiteCell}"></local:FigureCell>
 
         </Grid>
     </Grid>
