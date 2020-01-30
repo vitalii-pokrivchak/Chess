@@ -18,42 +18,59 @@ namespace WpfChess
     /// </summary>
     public partial class FigureCell : UserControl
     {
-        //public readonly static DependencyProperty BackgroudCellProperty;
- 
-        //public Chess.FigureColor CellColor
-        //{
-        //    get => (Chess.FigureColor)GetValue(CellColorProperty);
-        //    set => SetValue(CellColorProperty, value);
-        //}
+        public readonly static DependencyProperty BackgroudCellProperty;
+        public readonly static DependencyProperty CurrentFigureProperty;
 
-        //public Brush BackgroudBlackCell
-        //{
-        //    get => (Brush)GetValue(BackgroudBlackCellProperty);
-        //    set => SetValue(BackgroudBlackCellProperty, value);
-        //}
+        public Brush BackgroudCell
+        {
+            get => (Brush)GetValue(BackgroudCellProperty);
+            set => SetValue(BackgroudCellProperty, value);
+        }
+
+        public Figure CurrentFigure
+        {
+           get => (Figure)GetValue(CurrentFigureProperty);
+            set => SetValue(CurrentFigureProperty, value);
+        }
 
         public FigureCell()
         {
             InitializeComponent();
         }
 
-        //static FigureCell()
-        //    {
-        //    CellColorProperty = DependencyProperty.Register(
-        //                              nameof(FigureColor),
-        //                              typeof(Chess.FigureColor),
-        //                              typeof(FigureCell),
-        //                              new FrameworkPropertyMetadata(
-        //                        Chess.FigureColor.White,
-        //                        FrameworkPropertyMetadataOptions.BindsTwoWayByDefault,
-        //                        new PropertyChangedCallback(OnFigugeColorChanged)));
+        static FigureCell()
+        {
+            BackgroudCellProperty = DependencyProperty.Register(
+                                      nameof(BackgroudCell),
+                                      typeof(Brush),
+                                      typeof(FigureCell),
+                                      new FrameworkPropertyMetadata(
+                                Brushes.White,
+                                FrameworkPropertyMetadataOptions.None,
+                                new PropertyChangedCallback(OnFigugeColorChanged)));
+            CurrentFigureProperty = DependencyProperty.Register(
+                nameof(CurrentFigure),
+                typeof(Figure),
+                typeof(FigureCell),
+                new FrameworkPropertyMetadata(
+                    null,
+                    FrameworkPropertyMetadataOptions.None,
+                    new PropertyChangedCallback(OnFigureChanged)));
 
+        }
 
-        //}
+        private static void OnFigureChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
+        {
+            if (e.NewValue != e.OldValue)
+            {
+                fi
+            }
+        }
 
-        //private static void OnFigugeColorChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
-        //{
-            
-        //}
+        private static void OnFigugeColorChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
+        {
+            var a = 10;
+
+        }
     }
 }
