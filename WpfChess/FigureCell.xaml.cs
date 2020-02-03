@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Text;
 using System.Windows;
 using System.Windows.Controls;
@@ -18,18 +19,11 @@ namespace WpfChess
     /// </summary>
     public partial class FigureCell : UserControl
     {
-        public readonly static DependencyProperty BackgroudCellProperty;
         public readonly static DependencyProperty CurrentFigureProperty;
 
-        public Brush BackgroudCell
+        public Chess.Figure CurrentFigure
         {
-            get => (Brush)GetValue(BackgroudCellProperty);
-            set => SetValue(BackgroudCellProperty, value);
-        }
-
-        public Figure CurrentFigure
-        {
-           get => (Figure)GetValue(CurrentFigureProperty);
+           get => (Chess.Figure)GetValue(CurrentFigureProperty);
             set => SetValue(CurrentFigureProperty, value);
         }
 
@@ -40,17 +34,9 @@ namespace WpfChess
 
         static FigureCell()
         {
-            BackgroudCellProperty = DependencyProperty.Register(
-                                      nameof(BackgroudCell),
-                                      typeof(Brush),
-                                      typeof(FigureCell),
-                                      new FrameworkPropertyMetadata(
-                                Brushes.White,
-                                FrameworkPropertyMetadataOptions.None,
-                                new PropertyChangedCallback(OnFigugeColorChanged)));
             CurrentFigureProperty = DependencyProperty.Register(
                 nameof(CurrentFigure),
-                typeof(Figure),
+                typeof(Chess.Figure),
                 typeof(FigureCell),
                 new FrameworkPropertyMetadata(
                     null,
@@ -58,19 +44,83 @@ namespace WpfChess
                     new PropertyChangedCallback(OnFigureChanged)));
 
         }
+        public static BitmapImage ConvertByteArrayToBitmapImage(Byte[] bytes)
+        {
+            var stream = new MemoryStream(bytes);
+            stream.Seek(0, SeekOrigin.Begin);
+            var image = new BitmapImage();
+            image.BeginInit();
+            image.StreamSource = stream;
+            image.EndInit();
+            return image;
+        }
 
         private static void OnFigureChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
             if (e.NewValue != e.OldValue)
             {
-                fi
+                var newValue = (Chess.Figure)e.NewValue;
+
+                byte[] img= null;
+                if (newValue.Color == Chess.FigureColor.Black)
+                {
+                    switch (newValue.FigureOrder)
+                    {
+                        case 0:
+                            img = Chess.ResourceImages.KingBlack;
+                            break;
+                        case 5:
+                            img = Chess.ResourceImages.QueenBlack;
+                            break;
+                        case 4:
+                            img = Chess.ResourceImages.RockBlack;
+                            break;
+                        case 3:
+                            img = Chess.ResourceImages.HourseBlack;
+                            break;
+                        case 2:
+                            img = Chess.ResourceImages.BishopBlack;
+                            break;
+                        case 1:
+                            img = Chess.ResourceImages.PawnBlack;
+                            break;
+
+                    }
+
+                }
+                else
+                {
+                    switch (newValue.FigureOrder)
+                    {
+                        case 0:
+                            img = Chess.ResourceImages.KingWhite;
+                            break;
+                        case 5:
+                            img = Chess.ResourceImages.QueenWhite;
+                            break;
+                        case 4:
+                            img = Chess.ResourceImages.RockWhite;
+                            break;
+                        case 3:
+                            img = Chess.ResourceImages.HourseWhite;
+                            break;
+                        case 2:
+                            img = Chess.ResourceImages.BishopWhite;
+                            break;
+                        case 1:
+                            img = Chess.ResourceImages.PawnWhite;
+                            break;
+
+                    }
+
+                }
+                if (img != null)
+                {
+                    var f = (FigureCell)d;
+                    f.fImage.Source = ConvertByteArrayToBitmapImage(img);
+                }
             }
         }
 
-        private static void OnFigugeColorChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
-        {
-            var a = 10;
-
-        }
     }
 }

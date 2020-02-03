@@ -5,13 +5,14 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WpfChess"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="MainWindow" Height="450" Width="800"
+        Loaded="Window_Loaded">
     <Window.Resources>
         <Style x:Key="WhiteCell">
             <Setter Property="Control.Background" Value="White"></Setter>
         </Style>
         <Style x:Key="BlackCell">
-            <Setter Property="Control.Background" Value="Black"></Setter>
+            <Setter Property="Control.Background" Value="Gray"></Setter>
         </Style>
 
     </Window.Resources>
@@ -20,7 +21,7 @@
             <ColumnDefinition></ColumnDefinition>
             <ColumnDefinition></ColumnDefinition>
          </Grid.ColumnDefinitions>
-        <Grid Grid.Column="0">
+        <Grid Grid.Column="0" x:Name="deskGrid">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="Auto"></ColumnDefinition>
                 <ColumnDefinition></ColumnDefinition>
