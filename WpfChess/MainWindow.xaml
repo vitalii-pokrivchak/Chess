@@ -10,9 +10,21 @@
     <Window.Resources>
         <Style x:Key="WhiteCell">
             <Setter Property="Control.Background" Value="White"></Setter>
+            <Style.Triggers>
+                <Trigger Property="local:FigureCell.IsMarkFigure" Value="true">
+                    <Setter Property="Control.Background" Value="{Binding RelativeSource={RelativeSource self},Path=MarkFigure}" />
+                </Trigger>
+            </Style.Triggers>
+
         </Style>
         <Style x:Key="BlackCell">
             <Setter Property="Control.Background" Value="Gray"></Setter>
+            <Style.Triggers>
+                <Trigger Property="local:FigureCell.IsMarkFigure" Value="true">
+                    <Setter Property="Control.Background" Value="{Binding RelativeSource={RelativeSource self},Path=MarkFigure}" />
+                </Trigger>
+            </Style.Triggers>
+
         </Style>
 
     </Window.Resources>

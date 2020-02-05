@@ -20,11 +20,23 @@ namespace WpfChess
     public partial class FigureCell : UserControl
     {
         public readonly static DependencyProperty CurrentFigureProperty;
+        public readonly static DependencyProperty IsMarkFigureProperty;
+        public readonly static DependencyProperty MarkFigureProperty;
 
         public Chess.Figure CurrentFigure
         {
            get => (Chess.Figure)GetValue(CurrentFigureProperty);
             set => SetValue(CurrentFigureProperty, value);
+        }
+        public bool IsMarkFigure
+        {
+            get => (bool)GetValue(IsMarkFigureProperty);
+            set => SetValue(IsMarkFigureProperty, value);
+        }
+        public Brush  MarkFigure
+        {
+            get => (Brush)GetValue(MarkFigureProperty);
+            set => SetValue(MarkFigureProperty, value);
         }
 
         public FigureCell()
@@ -43,7 +55,37 @@ namespace WpfChess
                     FrameworkPropertyMetadataOptions.None,
                     new PropertyChangedCallback(OnFigureChanged)));
 
+            MarkFigureProperty = DependencyProperty.Register(
+    nameof(MarkFigure),
+    typeof(Brush),
+    typeof(FigureCell),
+    new FrameworkPropertyMetadata(
+        Brushes.Green,
+        FrameworkPropertyMetadataOptions.None,
+        new PropertyChangedCallback(OnMarkChanged)));
+
+            IsMarkFigureProperty = DependencyProperty.Register(
+                nameof(IsMarkFigure),
+                typeof(bool),
+                typeof(FigureCell),
+                new FrameworkPropertyMetadata(
+                    false,
+                    FrameworkPropertyMetadataOptions.BindsTwoWayByDefault,
+                    new PropertyChangedCallback(OnIsMarkFigureChanged)));
+
+
         }
+
+        private static void OnIsMarkFigureChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
+        {
+           
+        }
+
+        private static void OnMarkChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
+        {
+            
+        }
+
         public static BitmapImage ConvertByteArrayToBitmapImage(Byte[] bytes)
         {
             var stream = new MemoryStream(bytes);

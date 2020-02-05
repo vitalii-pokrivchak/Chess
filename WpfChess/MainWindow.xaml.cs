@@ -23,6 +23,9 @@ namespace WpfChess
     public partial class MainWindow : Window
     {
         Desk _desk = new Desk();
+
+        SFigurePosition? selectedFigure = null;
+        SFigurePosition[] enabledCoords = new SFigurePosition[0];
         public MainWindow()
         {
             InitializeComponent();
@@ -40,11 +43,11 @@ namespace WpfChess
             return null;
         }
 
-        (int,int) GetFigureCoordinates(FigureCell figure)
+        SFigurePosition GetFigureCoordinates(FigureCell figure)
         {
             int x = System.Windows.Controls.Grid.GetColumn(figure);
             int y = System.Windows.Controls.Grid.GetRow(figure);
-            return (x, y);
+            return new SFigurePosition(y-1,x-1);
         }
 
         SFigurePosition GetCoordiantes(int i, int j)
@@ -68,9 +71,62 @@ namespace WpfChess
                     if (control != null)
                     {
                         control.CurrentFigure = _desk[coords.X, coords.Y];
+                        control.MouseEnter += Cell_MouseEnter;
+                        control.MouseLeave += Cell_MouseLeave;
+                        control.MouseDown += Cell_MouseDown;
                     }
                 }
             }
+        }
+
+
+
+        private void Cell_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            var f = sender as FigureCell;
+            if (f == null) return;
+            var cords = GetFigureCoordinates(f);
+            if (selectedFigure != null)
+            {
+
+
+            }
+            else
+            {
+                if (f.CurrentFigure != null)
+                {
+                    enabledCoords = _desk.GetMoveCords(cords);
+                    if (enabledCoords.Length > 0)
+                    {
+                        selectedFigure = cords;
+                        f.IsMarkFigure = true;
+                        foreach (var c in enabledCoords)
+                            GetFigure(c.Y + 1, c.X + 1).IsMarkFigure = true;
+
+                    }
+                }
+            }
+        }
+
+        private void Cell_MouseLeave(object sender, MouseEventArgs e)
+        {
+            this.Cursor = Cursors.Arrow;
+        }
+
+        private void Cell_MouseEnter(object sender, MouseEventArgs e)
+        {
+            FigureCell f = sender as FigureCell;
+            if (f != null)
+            {
+                if (f.CurrentFigure != null)
+                {
+                    if (_desk.CanMove(GetFigureCoordinates(f)))  
+                        this.Cursor = Cursors.Hand;
+
+                }
+
+            }
+            
         }
     }
 }

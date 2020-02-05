@@ -27,15 +27,15 @@ namespace Chess
         public void ClearDesk()
         {
             // fix clear 
-            for (int i = 2;i<DESKSIZE-2;i++)
+            for (int i = 2; i < DESKSIZE - 2; i++)
             {
-                for (int j=0;j<DESKSIZE;j++)
+                for (int j = 0; j < DESKSIZE; j++)
                 {
                     _deskGrid[i, j] = null;
                 }
             }
-            
-            
+
+
             for (int i = 0; i < DESKSIZE; i++)
             {
                 _deskGrid[1, i] = new Pawn(FigureColor.Black);
@@ -86,7 +86,7 @@ namespace Chess
                     SetActive(i, j);
                 }
 
-                Move(i, j);                
+                Move(i, j);
             }
         }
         void SetActive(int i, int j)
@@ -138,6 +138,34 @@ namespace Chess
             _activePlayerColor = (_activePlayerColor == FigureColor.White) ? FigureColor.Black : FigureColor.White;
 
             Refresh.Invoke();
+        }
+
+        public bool CanMove(SFigurePosition currPos)
+        {
+            var f = this[currPos.X, currPos.Y];
+            if (f == null) return false;
+            if (f.Color != ActivePlayerColor) return false;
+            return f.CanMove(currPos, ref _deskGrid);
+        }
+
+        public SFigurePosition[] GetMoveCords(SFigurePosition pos)
+        {
+            var cords = new List<SFigurePosition>();
+            var f = this[pos.X, pos.Y];
+            if (f == null) return cords.ToArray();
+
+            for (int i = 0; i < 8; i++)
+            {
+                for (int j = 0; j < 8; j++)
+                {
+                    var c = new SFigurePosition(i, j);
+                    if (f.CheckMove(c, pos, ref _deskGrid) == MoveState.Can)
+                    {
+                        cords.Add(c);
+                    }
+                }
+            }
+            return cords.ToArray();
         }
     }
 }
