@@ -8,7 +8,10 @@
 
 /WindowsFormsChess/bin
 /WindowsFormsChess/obj
+/ChessConsole/obj
 
 /WpfChess/obj
 /WpfChess/bin
 /ChessConsoleServer/bin/Debug/netcoreapp3.1
+/debug.log
+/ChessConsoleServer/obj/project.nuget.cache

@@ -1,5 +1,5 @@
 ﻿WpfChess
-
+1.0.0.0
 
 winexe
 C#
@@ -12,7 +12,7 @@ TRACE;DEBUG;NETCOREAPP;NETCOREAPP3_1
 C:\Users\serhiy\source\repos\sabatex\Chess\WpfChess\App.xaml
 2-1937592648
 
-5-779200938
+6-1368517363
 193-1994493158
 FigureCell.xaml;MainWindow.xaml;
 
