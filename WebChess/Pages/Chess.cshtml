@@ -1,0 +1,17 @@
+﻿@page
+@model WebChess.Pages.ChessModel
+@{
+    ViewData["Title"] = "Chess";
+}
+
+<div class="chessDesk">
+    <div id="chessTable" class="chessTable">
+
+    </div>
+    <div class="playerDesk">
+        <div class="userBlackDashBoard userDashBoard"></div>
+        <div class="userWhiteDashBoard userDashBoard"></div>
+    </div>
+</div>
+<script src="~/js/svg.js"></script>
+<script src="~/js/chess.js"></script>

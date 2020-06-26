@@ -19,6 +19,12 @@ namespace WebChess.Pages
 
         public void OnGet()
         {
+            Response.Cookies.Append("chessStatus", "true");
+            //var a = HttpContext.Request.Cookies;
+            //if (a.Count == 0)
+            //{
+            //    a.Append(new KeyValuePair<string, string>("chessStatus", "true"));
+            //}
 
         }
     }
