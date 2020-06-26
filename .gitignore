@@ -17,3 +17,5 @@
 /ChessConsoleServer/obj/project.nuget.cache
 JS/debug.log
 /WebChess/obj
+/ChessConsoleServer/obj
+/WebChess/bin
