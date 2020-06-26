@@ -1,12 +1,41 @@
-.chessDesk {
+.chessDesk{
+    display:flex;
+    flex-direction: row;
+    box-sizing: border-box;
+}
+.playerDesk{
+    box-sizing: border-box;
+    margin-left: 5px;
+}
+
+
+.userDashBoard{
+    width: 200px;
+    height: 220px;
+    border-style: solid;
+    border-width: 1px;
+    border-radius: 5px;
+    box-sizing: border-box;
+}
+
+.userWhiteDashBoard{
+    margin-top: 6px;
+}
+.userBlackDashBoard{
+
+}
+
+.chessTable {
     display: grid;
     grid-template-columns: 10px auto auto auto auto auto auto auto auto 10px;
     grid-template-rows: 20px auto auto auto auto auto auto auto auto 20px;
-    padding-left: 5px;
-    padding-top: 5px;
+    padding-left: 0;
+    padding-top: 0;
     grid-gap:0;
     border-style: solid;
-    width: 420px;
+    width: 426px;
+    height: 446px;
+    box-sizing: border-box;
 }
 .gripDeskRow {
     text-align: center;
@@ -46,4 +75,11 @@
 
 .cellSelected {
     background-color: aqua;
+}
+
+
+@media screen and (max-width:730px){
+    .chessDesk {
+        flex-direction: column;
+    }
 }
