@@ -167,5 +167,13 @@ namespace Chess
             }
             return cords.ToArray();
         }
+    
+        public ChessCell[] getDesk()
+        {
+            return new ChessCell[] { };
+        }
+    
+    
+    
     }
 }

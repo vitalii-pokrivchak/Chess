@@ -1,3 +1,12 @@
+class CellPoint {
+    constructor(row, column) {
+        this.row = row;
+        this.column = column;
+    }
+
+}
+
+
 class FigureColor{
     static black=1;
     static white=0;
@@ -15,9 +24,6 @@ class Defines{
     static chessCellDestinationMark = "chessCellDestinationMark";
     static figureMustFight = "canBeat";
 }
-
-
-
 
 class Figure{
     constructor(color){
@@ -88,6 +94,59 @@ class Horse extends Figure {
         super(color);
         this.figureOrder = 3;
     }
+    showFigure1(cellElement, fillColor) {
+        cellElement.innerHTML = '';
+        let altFillColor = '#FFFFFF';
+        if (fillColor == undefined) {
+            if (this.color == FigureColor.black) {
+                fillColor = '#000000';
+                altFillColor = '#FFFFFF';
+            } else {
+                fillColor = '#FFFFFF';
+                altFillColor = '#000000';
+            }
+
+        }
+
+        let canvas = document.createElement("canvas");
+        cellElement.appendChild(canvas);
+        let ctx = canvas.getContext("2d");
+        ctx.beginPath();
+        ctx.moveTo(0, 0);
+        ctx.lineTo(50, 50);
+        ctx.lineTo(50, 0);
+        ctx.moveTo(0,0)
+        ctx.stroke();
+        //ctx.fill();
+ 
+
+        let path = new Path2D('M 22,10 C 32.5,11 38.5,18 38,39 L 15,39 C 15,30 25,32.5 23,18');
+        ctx.fillStyle = fillColor;
+        ctx.strokeStyle = '#000000';
+        ctx.stroke(path);
+        ctx.fill(path);
+        
+        path = new Path2D('M 24,18 C 24.38,20.91 18.45,25.37 16,27 C 13,29 13.18,31.34 11,31 C 9.958,30.06 12.41,27.96 11,28 C 10,28 11.19,29.23 10,30 C 9,30 5.997,31 6,26 C 6,24 12,14 12,14 C 12,14 13.89,12.1 14,10.5 C 13.27,9.506 13.5,8.5 13.5,7.5 C 14.5,6.5 16.5,10 16.5,10 L 18.5,10 C 18.5,10 19.28,8.008 21,7 C 22,7 22,10 22,10');
+        ctx.stroke(path);
+        ctx.fill(path);
+
+        path = new Path2D('M 15 15.5 A 0.5 1.5 0 1 1  14,15.5 A 0.5 1.5 0 1 1  15 15.5 z');
+        ctx.fillStyle = altFillColor;
+        ctx.strokeStyle = altFillColor;
+        //ctx.transform(0.866, 0.5, -0.5, 0.866, 9.693, -5.173);
+        ctx.stroke(path);
+        ctx.fill(path);
+        
+
+        path = new Path2D('M 24.55,10.4 L 24.1,11.85 L 24.6,12 C 27.75,13 30.25,14.49 32.5,18.75 C 34.75,23.01 35.75,29.06 35.25,39 L 35.2,39.5 L 37.45,39.5 L 37.5,39 C 38,28.94 36.62,22.15 34.25,17.66 C 31.88,13.17 28.46,11.02 25.06,10.5 L 24.55,10.4 z');
+        ctx.fillStyle = fillColor;
+        ctx.strokeStyle = altFillColor;
+        ctx.stroke(path);
+        ctx.fill(path);
+        
+    }
+
+
     showFigure(cellElement){
         let draw = this.getDraw(cellElement);
 
@@ -237,7 +296,6 @@ class Pawn extends Figure {
 
 
 }
-
 class Queen extends Figure {
     constructor(color){
         super(color);
@@ -316,7 +374,6 @@ class Queen extends Figure {
     }
 
 }
-
 class Rook extends Figure {
     constructor(color){
         super(color);
@@ -410,6 +467,12 @@ class ChessCell{
         div.classList.add("chessCell");
         if ((row+column) % 2) div.classList.add("blackCell");
         div.id = this.getID();
+        //
+        div.ondragstart = dragCell;
+        div.ondragover = allowDropCell;
+        div.ondrop = dropCell;
+
+
         div.onclick = chessDeskCellClick;
         parrent.appendChild(div);
         this.figure = figure;
@@ -462,7 +525,6 @@ class ChessCell{
 
 
 }
-
 
 class CanMoveDestination{
     constructor(cell,moveState){
@@ -598,8 +660,55 @@ class ChessDesk{
             this.currentPlayer = FigureColor.black;
         else
             this.currentPlayer = FigureColor.white;
+        // Ajax
+        let xhttp = new XMLHttpRequest();
+        let msg = JSON.stringify({ "row": cell.row, "column": cell.column, "destinationRow": targetCell.row, "destinationColumn": targetCell.column });
+        let fdPost = new FormData();
+        fdPost.append("row", cell.row);
+        fdPost.append('column', cell.column);
+        fdPost.append('destinationRow', targetCell.row);
+        fdPost.append('destinationColumn', targetCell.column);
+
+        //fdPost.append("data", msg);
+        xhttp.open("POST", "/Chess?handler=move", true);
+        xhttp.timeout = 9000;
+        ////xhttp.responseType = "json";
+        //xhttp.setRequestHeader("Content-Type", 'application/json; charset=utf-8');
+        xhttp.setRequestHeader("XSRF-TOKEN", $('input:hidden[name="__RequestVerificationToken"]').val());
+        //xhttp.onload = function () {
+        //    if (xhttp.status === 200) {
+        //        //var userInfo = JSON.parse(xhttp.responseText);
+        //    }
+        //};
+        xhttp.send(fdPost);
+
+        //$.ajax({
+        //    type: "POST",
+        //    url: "/Chess?handler=move",
+        //    beforeSend: function (xhr) {
+        //        xhr.setRequestHeader("XSRF-TOKEN", $('input:hidden[name="__RequestVerificationToken"]').val());
+        //    },
+        //    data: msg,
+        //    contentType : "application/json; charset=utf-8",
+        //    dataType: "json",
+        //    success: function (response) {
+        //        //var dvItems = $("#dvPostItems");
+        //        //dvItems.empty();
+        //        //$.each(response, function (i, item) {
+        //        //    var $tr = $('<li>').append(item).appendTo(dvItems);
+        //        //});
+        //        let a = 10;
+        //    },
+        //    failure: function (response) {
+        //        alert(response);
+        //    }
+        //})
 
     }
+
+ 
+
+
 
     selectFigure(cellElement){
         // if exist selected figure
@@ -638,6 +747,7 @@ class ChessDesk{
     addDivElement(html,className,owner){
         let gripDeskCell = document.createElement("div");
         gripDeskCell.innerHTML = html;
+        gripDeskCell.style.userSelect = 'none';
         gripDeskCell.classList.add(className);//<div class="gripDeskRow">a</div>
         owner.appendChild(gripDeskCell);    
     }
@@ -661,10 +771,14 @@ class ChessDesk{
     setHoverForCells(){
         for (let cell of this.desk){
             cell.canMoves = this.getMovePositions(cell);
-            if (cell.canMoves.length > 0)
+            if (cell.canMoves.length > 0) {
                 cell.cellElement.classList.add(Defines.chessCellCanMove);
-            else
-            cell.cellElement.classList.remove(Defines.chessCellCanMove);
+                cell.cellElement.draggable = true;
+            }
+            else {
+                cell.cellElement.classList.remove(Defines.chessCellCanMove);
+                cell.cellElement.draggable = false;
+            }
         }
     }
 
@@ -690,8 +804,25 @@ function chessDeskCellClick(event){
     }
 }
 
+function dropCell(ev) {
+    ev.preventDefault();
+    let data = ev.dataTransfer.getData("cellCords");
+    let Targetcell = globalThis.playerDesk.chessDesk.getCellById(ev.target.id);
+    globalThis.playerDesk.chessDesk.moveFigure()
+
+}
+
+function allowDropCell(ev) {
+    ev.preventDefault();
+}
+
+function dragCell(ev) {
+    let cell = globalThis.playerDesk.chessDesk.getCellById(ev.target.id);
+    ev.dataTransfer.setData("cellCords",  { row:cell.row, column:cell.column });
+}
+
 globalThis.playerDesk = new PlayerDesk("chessTable");
 globalThis.playerDesk.chessDesk.currentPlayer = FigureColor.white;
-let chessCookie = globalThis.document.cookie;
+
 
 
