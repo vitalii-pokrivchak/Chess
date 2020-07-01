@@ -712,7 +712,7 @@ class ChessDesk{
 
     selectFigure(cellElement){
         // if exist selected figure
-        let cell = getCellById(cellElement.id);
+        let cell = this.getCellById(cellElement.id);
         if (cell == this.selectedItem)
         {
             // click to the same figure
@@ -724,8 +724,8 @@ class ChessDesk{
                 // first click
                 cellElement.classList.add(Defines.cellSelected);
                 this.canMovePositions = this.getMovePositions(this.getCellById(cellElement.id));
-                for (let cell of this.canMovePositions){
-                    cell.getCellElement().classList.add(Defines.canMovePositions);
+                for (let cell of this.canMovePositions) {
+                    cell.cell.cellElement.classList.add(Defines.canMovePositions);
                 }
             }else{
 
@@ -739,8 +739,8 @@ class ChessDesk{
 
         cellElement.classList.add(Defines.cellSelected);
         this.canMovePositions = this.getMovePositions(this.getCellById(cellElement.id));
-        for (let cell of this.canMovePositions){
-            cell.getCellElement().classList
+        for (let cell of this.canMovePositions) {
+            cell.cell.cellElement.classList
         }
 
     }
@@ -808,7 +808,7 @@ function dropCell(ev) {
     ev.preventDefault();
     let data = ev.dataTransfer.getData("cellCords");
     let Targetcell = globalThis.playerDesk.chessDesk.getCellById(ev.target.id);
-    globalThis.playerDesk.chessDesk.moveFigure()
+    globalThis.playerDesk.chessDesk.moveFigure(ev.target);
 
 }
 
@@ -818,7 +818,8 @@ function allowDropCell(ev) {
 
 function dragCell(ev) {
     let cell = globalThis.playerDesk.chessDesk.getCellById(ev.target.id);
-    ev.dataTransfer.setData("cellCords",  { row:cell.row, column:cell.column });
+    ev.dataTransfer.setData("cellCords", { row: cell.row, column: cell.column });
+    globalThis.playerDesk.chessDesk.selectFigure(ev.target);
 }
 
 globalThis.playerDesk = new PlayerDesk("chessTable");
