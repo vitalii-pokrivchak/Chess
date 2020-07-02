@@ -14,5 +14,21 @@ function dragCell(ev) {
     let cell = globalThis.playerDesk.chessDesk.getCellById(ev.target.id);
     ev.dataTransfer.setData("cellCords",  { row:cell.row, column:cell.column });
 }
-
-export { dropCell,allowDropCell,dragCell };
+function init(Desk,drag){
+    if(drag){
+        for(let i = 0;i < Desk.length;i++){
+            Desk[i].cellElement.ondragstart = dragCell;
+            Desk[i].cellElement.ondragover = allowDropCell;
+            Desk[i].cellElement.ondrop = dropCell;
+        }
+    }
+    else{
+        for(let i = 0;i < Desk.length;i++){
+            Desk[i].cellElement.ondragstart = undefined;
+            Desk[i].cellElement.ondragover = undefined;
+            Desk[i].cellElement.ondrop = undefined;
+            Desk[i].cellElement.draggable = false;
+        }
+    }
+}
+export { init };

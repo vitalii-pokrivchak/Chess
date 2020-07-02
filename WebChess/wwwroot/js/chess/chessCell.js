@@ -1,10 +1,8 @@
 import { Defines } from './defines.js';
-import { dropCell,allowDropCell,dragCell } from './dragDrop.js';
 import { chessDeskCellClick } from './click.js';
 export class ChessCell{
     constructor(row,column,figure,parrent){
         this._canBeat = false;
-        this.parrent = parent;
         this.row = row;
         this.column = column;
         //this.figure = figure;
@@ -12,12 +10,6 @@ export class ChessCell{
         div.classList.add("chessCell");
         if ((row+column) % 2) div.classList.add("blackCell");
         div.id = this.getID();
-        //
-        div.ondragstart = dragCell;
-        div.ondragover = allowDropCell;
-        div.ondrop = dropCell;
-
-
         div.onclick = chessDeskCellClick;
         parrent.appendChild(div);
         this.figure = figure;
