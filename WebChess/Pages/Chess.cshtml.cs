@@ -2,10 +2,13 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Net.Mime;
+using System.Text;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Newtonsoft.Json;
+using WebChess.Models;
 
 namespace WebChess.Pages
 {
@@ -41,6 +44,13 @@ namespace WebChess.Pages
             }
 
             var a = 10;
+        }
+
+        public JsonResult OnGetDesk()
+        {
+            var desk = new ChessDesk();
+            return new JsonResult(desk);
+
         }
     }
 }
