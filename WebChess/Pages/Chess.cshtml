@@ -4,10 +4,9 @@
     ViewData["Title"] = "Chess";
 }
 
-    <div class="chessDesk">
-        @Html.AntiForgeryToken()
-        <div id="chessTable" class="chessTable">
+<div class="chessDesk" id="chessDesk">
 
+<<<<<<< HEAD
         </div>
         <div class="playerDesk">
             <div class="userBlackDashBoard userDashBoard"></div>
@@ -16,3 +15,11 @@
     </div>
 <script src="~/lib/svg/svg.js"></script>
 <script src="~/js/chess.js" type="module"></script>
+=======
+
+</div>
+@Html.AntiForgeryToken()
+
+<script src="~/lib/svg/svg.js" asp-append-version="true"></script>
+<script src="~/js/chess.js" type="module" asp-append-version="true"></script>
+>>>>>>> 82450a9967dec9571d814c78bd55f23821904074

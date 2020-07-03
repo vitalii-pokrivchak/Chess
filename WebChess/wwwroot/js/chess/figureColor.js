@@ -1,4 +1,5 @@
-export class FigureColor{
-    static black=1;
-    static white=0;
+﻿export class FigureColor {
+    static danger = 2;
+    static black = 1;
+    static white = 0;
 }
